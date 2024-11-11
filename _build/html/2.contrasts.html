@@ -430,6 +430,36 @@ t = \frac{\hat{\beta}_{k}}{\sigma\{\beta_{k}\}}
 c = \mathbf{L}\hat{\boldsymbol{\beta}},
 \]</div>
 <p>where we can see our parameter estimates are being pre-multiplied by a vector called <span class="math notranslate nohighlight">\(\mathbf{L}\)</span>. This vector contains <em>weights</em>, which work to create a linear combination of our parameter estimates. To see this, consider the following example</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+c = \mathbf{L}\hat{\boldsymbol{\beta}} &amp;= 
+\begin{bmatrix}
+    0 &amp; 1 &amp; -1
+\end{bmatrix}
+\begin{bmatrix}
+    \beta_{0} \\
+    \beta_{1} \\
+    \beta_{2}
+\end{bmatrix} \\
+&amp;= (0 \times \beta_{0}) + (1 \times \beta_{1}) + (-1 \times \beta_{2}) \\
+&amp;= \beta_{1} - \beta_{2}.
+\end{align}
+\end{split}\]</div>
+<p>So, by specifying weights of <span class="math notranslate nohighlight">\([0 1 -1]\)</span>, we can subtract the estimates for <span class="math notranslate nohighlight">\(\beta_{1}\)</span> and <span class="math notranslate nohighlight">\(\beta_{2}\)</span>. Although this may seem an overly complicated way of subtracting two numbers, the point is that this is a <em>framework</em> where we can put any weights in <span class="math notranslate nohighlight">\(\mathbf{L}\)</span> to form a variety of values from the estimates. For example, we could use a contrast to average the estimates</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+c = \mathbf{L}\hat{\boldsymbol{\beta}} = 
+\begin{bmatrix}
+    0 &amp; 1/2 &amp; 1/2
+\end{bmatrix}
+\begin{bmatrix}
+    \beta_{0} \\
+    \beta_{1} \\
+    \beta_{2}
+\end{bmatrix}
+= \frac{\beta_{1} + \beta_{2}}{2}.
+\end{split}\]</div>
 </section>
 </section>
 
