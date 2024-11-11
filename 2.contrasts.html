@@ -382,6 +382,7 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#forming-a-statistical-parametric-map">Forming a Statistical Parametric Map</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contrasts-theory">Contrasts Theory</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#forming-a-statistical-map-using-contrasts">Forming a Statistical Map Using Contrasts</a></li>
 </ul>
             </nav>
         </div>
@@ -446,7 +447,7 @@ c = \mathbf{L}\hat{\boldsymbol{\beta}} &amp;=
 &amp;= \beta_{1} - \beta_{2}.
 \end{align}
 \end{split}\]</div>
-<p>So, by specifying weights of <span class="math notranslate nohighlight">\([0, 1, -1]\)</span>, we can subtract the estimates for <span class="math notranslate nohighlight">\(\beta_{1}\)</span> and <span class="math notranslate nohighlight">\(\beta_{2}\)</span>. Although this may seem an overly complicated way of subtracting two numbers, the point is that this is a <em>framework</em> where we can put any weights in <span class="math notranslate nohighlight">\(\mathbf{L}\)</span> to form a variety of values from the estimates. For example, we could use a contrast to average the estimates</p>
+<p>So, by specifying weights of <span class="math notranslate nohighlight">\([0, 1, -1]\)</span>, we can subtract the estimates for <span class="math notranslate nohighlight">\(\beta_{1}\)</span> and <span class="math notranslate nohighlight">\(\beta_{2}\)</span>. Although this may seem an overly complicated way of subtracting two numbers, the point is that this is a <em>framework</em> where we can put any weights in <span class="math notranslate nohighlight">\(\mathbf{L}\)</span> to calculate a variety of useful values from the estimates. For example, we could use a contrast to average the estimates</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 c = \mathbf{L}\hat{\boldsymbol{\beta}} = 
@@ -458,8 +459,35 @@ c = \mathbf{L}\hat{\boldsymbol{\beta}} =
     \beta_{1} \\
     \beta_{2}
 \end{bmatrix}
-= \frac{\beta_{1} + \beta_{2}}{2}.
+= \frac{\beta_{1} + \beta_{2}}{2},
 \end{split}\]</div>
+<p>or to select a single estimate</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+c = \mathbf{L}\hat{\boldsymbol{\beta}} = 
+\begin{bmatrix}
+    0 &amp; 1 &amp; 0
+\end{bmatrix}
+\begin{bmatrix}
+    \beta_{0} \\
+    \beta_{1} \\
+    \beta_{2}
+\end{bmatrix}
+= \beta_{1}.
+\end{split}\]</div>
+<p>The clever part here is that we can include our weights vector <span class="math notranslate nohighlight">\(\mathbf{L}\)</span> in the definition of <span class="math notranslate nohighlight">\(t\)</span>. This means that we can construct a <span class="math notranslate nohighlight">\(t\)</span>-statistics to test any value that can be built as a linear combination of the parameters. This new definition of <span class="math notranslate nohighlight">\(t\)</span> is then</p>
+<div class="math notranslate nohighlight">
+\[
+t = \frac{\mathbf{L}\hat{\boldsymbol{\beta}}}{\sigma\sqrt{\mathbf{L}(\mathbf{X}^{\prime}\mathbf{X})^{-1}\mathbf{L}^{\prime}}}.
+\]</div>
+<p>The denominator may look more complex now, but this is simply a way of calculating the correct standard error by using the variance-covariance matrix of the parameters in conjunction with the weights in <span class="math notranslate nohighlight">\(\mathbf{L}\)</span>.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>The most important element of contrasts to understand is that they represent a <em>language</em> for asking questions about our model estimates. As such, one of the bigger challenges of using the GLM in this fashion is learning to <em>speak in contrasts</em>. The advantage is that, rather than just testing individual parameter estimates, we can now test <em>differences</em>, <em>averages</em> or any other linear combination of the estimates. This means we can have a lot of flexibility in the hypotheses we put to the data. In addition, this is how we must specify hypothesis tests inside of SPM. Because of this, it is not only important to understand how to specify contrast weights, but also to understand the parameters themseleves. After all, how can you interpret a test of the difference between two parameters if you do not know what those parameters mean?</p>
+</div>
+</section>
+<section id="forming-a-statistical-map-using-contrasts">
+<h2>Forming a Statistical Map Using Contrasts<a class="headerlink" href="#forming-a-statistical-map-using-contrasts" title="Link to this heading">#</a></h2>
 </section>
 </section>
 
@@ -529,6 +557,7 @@ c = \mathbf{L}\hat{\boldsymbol{\beta}} =
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#forming-a-statistical-parametric-map">Forming a Statistical Parametric Map</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contrasts-theory">Contrasts Theory</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#forming-a-statistical-map-using-contrasts">Forming a Statistical Map Using Contrasts</a></li>
 </ul>
   </nav></div>
 
