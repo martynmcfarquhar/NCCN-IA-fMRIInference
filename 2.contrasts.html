@@ -57,6 +57,8 @@
     <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '2.contrasts';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -355,7 +357,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -371,6 +375,14 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#forming-a-statistical-parametric-map">Forming a Statistical Parametric Map</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -382,6 +394,24 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="contrasts">
 <h1>Contrasts<a class="headerlink" href="#contrasts" title="Link to this heading">#</a></h1>
+<p>Our first step towards trying to reach some conclusions about our data is to take the parameter estimate images and turn them into images of <em>statistics</em>. These images of statistics are known as <em>statistical parametric maps</em> (SPMs). In this section, we are going to explore how to create these statistical maps, before turning to what we actually do with them in a later section.</p>
+<section id="forming-a-statistical-parametric-map">
+<h2>Forming a Statistical Parametric Map<a class="headerlink" href="#forming-a-statistical-parametric-map" title="Link to this heading">#</a></h2>
+<p>As we know from the world of mathematical statistics, we can use a parameter estimate and its standard error to form a test statistic by dividing one by the other, like so</p>
+<div class="math notranslate nohighlight">
+\[
+t = \frac{\hat{\beta}_{k}}{\sigma\{\beta_{k}\}}
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\sigma\{\beta_{k}\}\)</span> is the standard error of parameter estimate <span class="math notranslate nohighlight">\(k\)</span>. This value forms a standardised metric of the magnitude of our effect, relative to the degree of uncertainty. We can think of it as how large our effect is, per unit of uncertainty. In other words, in standard error units. The smaller the uncertainty, the larger <span class="math notranslate nohighlight">\(t\)</span> will become.</p>
+<p>From the perspective of hypothesis testing, the value of <span class="math notranslate nohighlight">\(t\)</span> represents an implicit comparison with a hypothesised population value of 0 for the parameter in question. So we are assessing the extent to which the population parameter is likely to be 0, given our degree of uncertainty. The larger <span class="math notranslate nohighlight">\(t\)</span> becomes, the greater the discrepancy between the estimated parameter value and the hypothesised parameter value. In this instance, that means that the bigger <span class="math notranslate nohighlight">\(t\)</span> becomes, the more unlikely it is that the parameter truly is 0 in the population.</p>
+<p>When dealing with <em>images</em> of parameter estimates, we can perform the same calculation each voxel, converting each parameter estimate into a t value. This forms a statistical parametric map of <span class="math notranslate nohighlight">\(t\)</span>-statistics, also known as an SPM{t} image, as shown in <a class="reference internal" href="#creating-t-fig"><span class="std std-numref">Fig. 3</span></a>.</p>
+<figure class="align-default" id="creating-t-fig">
+<a class="reference internal image-reference" href="_images/creating-t.png"><img alt="_images/creating-t.png" src="_images/creating-t.png" style="width: 800px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 3 </span><span class="caption-text">Illustration of how an SPM{t} image can be created by dividing each voxel in the parameter estimate image by each voxel in the standard error image.</span><a class="headerlink" href="#creating-t-fig" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -438,6 +468,21 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#forming-a-statistical-parametric-map">Forming a Statistical Parametric Map</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
