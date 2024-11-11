@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -381,10 +381,11 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="from-images-to-inference">
 <h1>From Images to Inference<a class="headerlink" href="#from-images-to-inference" title="Link to this heading">#</a></h1>
-<figure class="align-default" id="modelling-fig">
-<a class="reference internal image-reference" href="images/modelling.png"><img alt="images/modelling.png" src="images/modelling.png" style="width: 800px;" /></a>
+<p>In terms of our analysis process so far, we have managed to build a design matrix that reflects our experimental manipulations and then use that design matrix to estimate parameters at each voxel. These parameters reflect the average signal change associated with our experimental conditions, meaning that their magnitude is of direct interest. When we look at the images of parameter estimates, we can already see hot spots (both dark and light) that indicate brain regions where the parameter estimates are large, as shown in <a class="reference internal" href="#param-images-fig"><span class="std std-numref">Fig. 1</span></a>. This is suggestive of large signal changes relative to the baseline in those regions of the brain.</p>
+<figure class="align-default" id="param-images-fig">
+<a class="reference internal image-reference" href="_images/glm-param-images.png"><img alt="_images/glm-param-images.png" src="_images/glm-param-images.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 1 </span><span class="caption-text">Illustration of how a statistical model splits a dataset into the effects of interest and error.</span><a class="headerlink" href="#modelling-fig" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 1 </span><span class="caption-text">Example of images of parameter estimates from the GLM.</span><a class="headerlink" href="#param-images-fig" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
