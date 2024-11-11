@@ -1,4 +1,4 @@
-rd -r .\_build
+Remove-Item -Force -Recurse -Path .\_build
 jupyter-book build .\
 git add -A
 git commit -m 'updates'
