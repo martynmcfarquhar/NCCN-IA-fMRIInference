@@ -381,6 +381,7 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#forming-a-statistical-parametric-map">Forming a Statistical Parametric Map</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contrasts-theory">Contrasts Theory</a></li>
 </ul>
             </nav>
         </div>
@@ -412,6 +413,17 @@ t = \frac{\hat{\beta}_{k}}{\sigma\{\beta_{k}\}}
 </figcaption>
 </figure>
 <p>Notice already that this gives us some insight into why we want to create an image of statistics. If we just looked at the parameter estimates image we might see a larger effect in the brain stem. However, looking at the standard error image, this region has a large degree of uncertainty around the accuracy of this estimate. As such, once this uncertainty is taken into account, the effect in the brain stem disappears. This nicely highlights why we should take the degree of uncertainty into account before trying to interpret the values of the parameter estimates.</p>
+<p>From this image of <span class="math notranslate nohighlight">\(t\)</span>-values we could then follow classical statistical theory and calculate an image of <span class="math notranslate nohighlight">\(p\)</span>-values associated with each <span class="math notranslate nohighlight">\(t\)</span>-statistic. We can then use the <span class="math notranslate nohighlight">\(p\)</span>-values to assess where in the brain we have significant effects. For instance, <a class="reference internal" href="#t-p-thresh-fig"><span class="std std-numref">Fig. 4</span></a> shows an image of <span class="math notranslate nohighlight">\(t\)</span>-values on the left and its associated image of <span class="math notranslate nohighlight">\(p\)</span>-values in the middle. The image on the right highlights which voxels have a <span class="math notranslate nohighlight">\(p\)</span>-value &lt; 0.05. So following the traditional NHST procedure, we have now localised where in the brain this parameter estimate is significantly different from 0.</p>
+<figure class="align-default" id="t-p-thresh-fig">
+<a class="reference internal image-reference" href="_images/t-p-thresh.png"><img alt="_images/t-p-thresh.png" src="_images/t-p-thresh.png" style="width: 800px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 4 </span><span class="caption-text">Example of applying traditional significance-testing criteria to an image of <span class="math notranslate nohighlight">\(t\)</span>-statistics.</span><a class="headerlink" href="#t-p-thresh-fig" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Unfortunately, there is a big problem with calculating <span class="math notranslate nohighlight">\(p\)</span>-values in this fashion, but we will get to that later in this lesson. For now, let us focus on the process of creating a statistical map. One problem with what we have done so far is that our approach to calculating <span class="math notranslate nohighlight">\(t\)</span> is limited to only testing one parameter at a time. Typically, in fMRI, our parameter estimates will represent signal change in relation to different experimental conditions. Because of this, the <em>differences</em> between the experimental conditions are often of interest. We might also want to look at the averages of several conditions, or perhaps look at differences of averages. As such, in order to make our hypothesis testing framework more flexible, we have to turn to the use of <em>contrasts</em>.</p>
+</section>
+<section id="contrasts-theory">
+<h2>Contrasts Theory<a class="headerlink" href="#contrasts-theory" title="Link to this heading">#</a></h2>
 </section>
 </section>
 
@@ -480,6 +492,7 @@ t = \frac{\hat{\beta}_{k}}{\sigma\{\beta_{k}\}}
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#forming-a-statistical-parametric-map">Forming a Statistical Parametric Map</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contrasts-theory">Contrasts Theory</a></li>
 </ul>
   </nav></div>
 
