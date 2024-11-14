@@ -62,7 +62,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = '5.solutions-multiple-testing';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Summary and Quiz" href="7.summary-quiz.html" />
+    <link rel="next" title="Levels of Inference" href="6.levels-inference.html" />
     <link rel="prev" title="The Multiple Testing Problem" href="4.multiple-testing.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -187,6 +187,7 @@
 <li class="toctree-l1"><a class="reference internal" href="3.thresholding-maps.html">Thresholding Statistical Maps</a></li>
 <li class="toctree-l1"><a class="reference internal" href="4.multiple-testing.html">The Multiple Testing Problem</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Solutions to the Multiple Testing Problem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6.levels-inference.html">Levels of Inference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="7.summary-quiz.html">Summary and Quiz</a></li>
 </ul>
 
@@ -390,7 +391,13 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-3-control-the-false-discovery-rate-fdr">Solution 3: Control the False Discovery Rate (FDR)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#choosing-a-threshold">Choosing a Threshold</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#choosing-a-threshold">Choosing a Threshold</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#uncorrected-p-0-001">Uncorrected <em>p</em> &lt; 0.001</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fdr-corrected-p-0-05">FDR-corrected <em>p</em> &lt; 0.05</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#topological-fdr-corrected-p-0-05">Topological FDR-corrected <em>p</em> &lt; 0.05</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fwe-corrected-p-0-05">FWE-corrected <em>p</em> &lt; 0.05</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -515,6 +522,21 @@ R = \frac{V}{\text{FWHM}_{x} \times \text{FWHM}_{y} \times \text{FWHM}_{z}} = \f
 <section id="choosing-a-threshold">
 <h2>Choosing a Threshold<a class="headerlink" href="#choosing-a-threshold" title="Link to this heading">#</a></h2>
 <p>The three approaches described in this section all differ in terms of their balance of false positives and false negatives. {numref}`` shows their application to the results of a single subject looking at pictures compared to resting. Here we can see the general finding that uncorrected thresholds are typically the most liberal, followed by voxel-wise FDR, topological FDR, and finally FWE using GRF.</p>
+<section id="uncorrected-p-0-001">
+<h3>Uncorrected <em>p</em> &lt; 0.001<a class="headerlink" href="#uncorrected-p-0-001" title="Link to this heading">#</a></h3>
+<iframe src="p-uncorr-001.html" width="800" height="600" frameborder="0" scrolling="no" title=""></iframe>
+</section>
+<section id="fdr-corrected-p-0-05">
+<h3>FDR-corrected <em>p</em> &lt; 0.05<a class="headerlink" href="#fdr-corrected-p-0-05" title="Link to this heading">#</a></h3>
+<iframe src="p-uncorr-001.html" width="800" height="600" frameborder="0" scrolling="no" title=""></iframe>
+</section>
+<section id="topological-fdr-corrected-p-0-05">
+<h3>Topological FDR-corrected <em>p</em> &lt; 0.05<a class="headerlink" href="#topological-fdr-corrected-p-0-05" title="Link to this heading">#</a></h3>
+<iframe src="p-uncorr-001.html" width="800" height="600" frameborder="0" scrolling="no" title=""></iframe>
+</section>
+<section id="fwe-corrected-p-0-05">
+<h3>FWE-corrected <em>p</em> &lt; 0.05<a class="headerlink" href="#fwe-corrected-p-0-05" title="Link to this heading">#</a></h3>
+<iframe src="p-uncorr-001.html" width="800" height="600" frameborder="0" scrolling="no" title=""></iframe>
 <figure class="align-default" id="thresh-comp-fig">
 <a class="reference internal image-reference" href="_images/thresh-comp.png"><img alt="_images/thresh-comp.png" src="_images/thresh-comp.png" style="width: 700px;" /></a>
 <figcaption>
@@ -528,6 +550,7 @@ R = \frac{V}{\text{FWHM}_{x} \times \text{FWHM}_{y} \times \text{FWHM}_{z}} = \f
 <p>Ultimately, there is limited good justification for an uncorrected threshold, but often this is the only way to see any results. As long as you understand the increasing risk of false positives and then interpret your results accordingly, any one of these approaches can be justified. Just note that you may not be able to convince anyone of the legitimacy of your findings if you have only used an uncorrected threshold. So you should strive to at least use <span class="math notranslate nohighlight">\(q_{\text{FDR}} &lt; 0.05\)</span> or <span class="math notranslate nohighlight">\(p_{\text{FWE}} &lt; 0.05\)</span>.</p>
 <p>None of these methods are perfect and you will always be compromising something, depending on which one you choose. Even if this feels unsatisfying, hopefully you at least understand why there is not a more concrete way to answer this question.</p>
 </div>
+</section>
 </section>
 </section>
 
@@ -571,11 +594,11 @@ R = \frac{V}{\text{FWHM}_{x} \times \text{FWHM}_{y} \times \text{FWHM}_{z}} = \f
       </div>
     </a>
     <a class="right-next"
-       href="7.summary-quiz.html"
+       href="6.levels-inference.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Summary and Quiz</p>
+        <p class="prev-next-title">Levels of Inference</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -602,7 +625,13 @@ R = \frac{V}{\text{FWHM}_{x} \times \text{FWHM}_{y} \times \text{FWHM}_{z}} = \f
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-3-control-the-false-discovery-rate-fdr">Solution 3: Control the False Discovery Rate (FDR)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#choosing-a-threshold">Choosing a Threshold</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#choosing-a-threshold">Choosing a Threshold</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#uncorrected-p-0-001">Uncorrected <em>p</em> &lt; 0.001</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fdr-corrected-p-0-05">FDR-corrected <em>p</em> &lt; 0.05</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#topological-fdr-corrected-p-0-05">Topological FDR-corrected <em>p</em> &lt; 0.05</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fwe-corrected-p-0-05">FWE-corrected <em>p</em> &lt; 0.05</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
