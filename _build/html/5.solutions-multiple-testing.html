@@ -453,9 +453,22 @@ document.write(`
 <figure class="align-default" id="smoothed-grf-fig">
 <a class="reference internal image-reference" href="_images/smoothed-grf.png"><img alt="_images/smoothed-grf.png" src="_images/smoothed-grf.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 13 </span><span class="caption-text">Illustration of an un-smoothed (<em>left</em>) and smoothed (<em>right</em>) Gaussian random field.</span><a class="headerlink" href="#smoothed-grf-fig" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 13 </span><span class="caption-text">Illustration of an un-smoothed (<em>left</em>) and smoothed (<em>right</em>) Gaussian random field (GRF).</span><a class="headerlink" href="#smoothed-grf-fig" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
+<p>Now we have something that can represent our imaging data under the null hypothesis. This is known as a <em>Gaussian random field</em> (GRF). If we then imagine specifying different thresholds to show or hide the voxels in this image, we might see something akin to <a class="reference internal" href="#thresh-grf-fig"><span class="std std-numref">Fig. 14</span></a>.</p>
+<figure class="align-default" id="thresh-grf-fig">
+<a class="reference internal image-reference" href="_images/thresh-grf.png"><img alt="_images/thresh-grf.png" src="_images/thresh-grf.png" style="width: 800px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 14 </span><span class="caption-text">Illustration of applying various thresholds to a GRF.</span><a class="headerlink" href="#thresh-grf-fig" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>If we assume our random field represents our image data under the null hypothesis, then the number of blobs that remain after thresholding tell us how many results we expect under the null, for a given threshold. So this seems useful, because it means we can have some idea about how many results we would expect in our image by chance when using a particular threshold.</p>
+<p>This concept of how many blobs remain in an image after thresholding can be quantified using a number known as the <em>Euler characteristic</em> (EC) of the image. Although, eventually, we will use the EC to define a <span class="math notranslate nohighlight">\(t\)</span>-threshold for our image of <span class="math notranslate nohighlight">\(t\)</span>-values, for this example we will be looking at using the EC to define a <span class="math notranslate nohighlight">\(z\)</span>-threshold for an image of <span class="math notranslate nohighlight">\(z\)</span>-values from a standard normal distribution. This is just to make the maths is a bit more palatable. So for a normal distribution, the EC is defined as</p>
+<div class="math notranslate nohighlight">
+\[
+EC(z) = R \frac{(4\ln{2})^{3/2}}{(2\pi)^{2}}e^{-z^{2}/2}(z^{2}-1)
+\]</div>
 </div>
 </section>
 </section>
