@@ -57,6 +57,8 @@
     <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '4.multiple-testing';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -357,7 +359,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -373,6 +377,14 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-general-multiple-testing-problem">The General Multiple Testing Problem</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -384,6 +396,41 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="the-multiple-testing-problem">
 <h1>The Multiple Testing Problem<a class="headerlink" href="#the-multiple-testing-problem" title="Link to this heading">#</a></h1>
+<p>So far, we have managed to define a framework for testing hypotheses using contrasts. We have seen how to turn these contrasts into maps of <span class="math notranslate nohighlight">\(t\)</span>-statistics, and have seen how we can then threshold these maps using the associated <span class="math notranslate nohighlight">\(p\)</span>-values using a threshold of <span class="math notranslate nohighlight">\(p &lt; 0.05\)</span>. Although it may seem like we are essentially done, those of you with some statistical knowledge may have already spotted a big issue known as the <em>multiple testing problem</em>.</p>
+<section id="the-general-multiple-testing-problem">
+<h2>The General Multiple Testing Problem<a class="headerlink" href="#the-general-multiple-testing-problem" title="Link to this heading">#</a></h2>
+<p>To understand the multiple testing problem, consider what a significance threshold of 5% actually means. In the world of frequentist inference, if we repeated our experiment multiple times and performed the same hypothesis test, we would only expect a significant <span class="math notranslate nohighlight">\(p\)</span>-value to occur 5% of the time if the null hypothesis was true. A small <span class="math notranslate nohighlight">\(p\)</span>-value therefore means either something rare has happened, or the null hypothesis is false.</p>
+<p>This is fine for a <em>single</em> hypothesis test, but if we did keep repeating the experiment over and over again, then suddenly those rare events are not so rare anymore. To see this, consider that the probability of at least one result from all those repeated experiments being significant is given by</p>
+<div class="math notranslate nohighlight">
+\[
+\text{FWER} = 1 - (1 - \alpha)^{m}.
+\]</div>
+<p>This is known as the <em>family-wise error rate</em>, where <span class="math notranslate nohighlight">\(\alpha\)</span> is the significance level and <span class="math notranslate nohighlight">\(m\)</span> is the number of tests. If we only conduct 1 test with <span class="math notranslate nohighlight">\(\alpha = 0.05\)</span>, then</p>
+<div class="math notranslate nohighlight">
+\[
+\text{FWER} = 1 - (1 - 0.05)^{1} = 1 - 0.95 = 0.05,
+\]</div>
+<p>as we would expect. However, if we conducted 10 tests then we get</p>
+<div class="math notranslate nohighlight">
+\[
+\text{FWER} = 1 - (1 - 0.05)^{10} = 1 - 0.60 = 0.40.
+\]</div>
+<p>So suddenly, the chance of at least one of those tests being significant is 40%, not the 5% that we wanted. Remember, this is the probability of significance <em>when the null is true</em>. So even if there is no effect, there is suddenly a 40% chance of declaring a result significant and thus making a <a class="reference external" href="https://en.wikipedia.org/wiki/Type_I_and_type_II_errors">Type I error</a>.</p>
+<div class="dropdown admonition">
+<p class="admonition-title">Advanced: Understanding the Probability of Multiple Testing</p>
+<p>To understand the probability behind the multiple testing problem, imagine rolling multiple dice simultaneously. The probability of rolling a 6 with a single die is <span class="math notranslate nohighlight">\(1/6 \approx 16.7\%\)</span>. The probability of at least one die showing a 6 when rolling multiple dice is given by</p>
+<div class="math notranslate nohighlight">
+\[
+P(6) = 1 - (1-0.167)^{m}, 
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(m\)</span> is the number of dice. If we were to roll 2 dice, this gives</p>
+<div class="math notranslate nohighlight">
+\[
+P(6) = 1 - (1-0.167)^{2} = 1 - 0.69 = 0.31, 
+\]</div>
+<p>meaning our chance of getting a 6 had increased from <span class="math notranslate nohighlight">\(\approx 16.7\%\)</span> to <span class="math notranslate nohighlight">\(\approx 31\%\)</span></p>
+</div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -440,6 +487,21 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-general-multiple-testing-problem">The General Multiple Testing Problem</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
