@@ -467,8 +467,28 @@ document.write(`
 <p>This concept of how many blobs remain in an image after thresholding can be quantified using a number known as the <em>Euler characteristic</em> (EC) of the image. Although, eventually, we will use the EC to define a <span class="math notranslate nohighlight">\(t\)</span>-threshold for our image of <span class="math notranslate nohighlight">\(t\)</span>-values, for this example we will be looking at using the EC to define a <span class="math notranslate nohighlight">\(z\)</span>-threshold for an image of <span class="math notranslate nohighlight">\(z\)</span>-values from a standard normal distribution. This is just to make the maths is a bit more palatable. So for a normal distribution, the EC is defined as</p>
 <div class="math notranslate nohighlight">
 \[
-EC(z) = R \frac{(4\ln{2})^{3/2}}{(2\pi)^{2}}e^{-z^{2}/2}(z^{2}-1)
+EC(z) = R \frac{(4\ln{2})^{3/2}}{(2\pi)^{2}}e^{-z^{2}/2}(z^{2}-1),
 \]</div>
+<p>which does not look particularly intuitive or useful on the face of it. However, the main element we need to understand here is the term <span class="math notranslate nohighlight">\(R\)</span>, which is known as the RESEL-count of the image. <span class="math notranslate nohighlight">\(R\)</span> is defined as</p>
+<div class="math notranslate nohighlight">
+\[
+R = \frac{V}{\text{FWHM}_{x} \times \text{FWHM}_{y} \times \text{FWHM}_{z}} = \frac{\text{Search volume}}{\text{Smoothness}},
+\]</div>
+<p>which is notable for two reasons. Firstly, it relates to the search volume (the size of the image), and secondly it relates to the intrinsic smoothness of the image. This smoothness quantifies the degree of correlation between neighbouring voxels, and is given as the dimensions of a Gaussian kernel which, if applied to an image of white noise, would result in the same smoothness as our data. This is not the same as the smoothing applied during pre-processing, but rather the combination of the inherent smoothness of the data and the smoothing we applied. The dimensions <span class="math notranslate nohighlight">\(\text{FWHM}_{x} \times \text{FWHM}_{y} \times \text{FWHM}_{z}\)</span> define a virtual voxel called a <em>RESEL</em> (RESolution ELement), which reflects an independent chunk of our image. Dividing the size of image by the dimensions of a RESEL expresses the image in RESEL-units, which can be thought of as describing the resolution of the image in terms of independent chunks. The clever thing about this is that it means that the degree of correction is <em>automatically</em> tuned to both the size of the image and the degree of correlation within an image.</p>
+<p>In order to use the Euler characteristic to determine the FWE threshold, consider the plot of Euler characteristic values against threshold values in <a class="reference internal" href="#ec-plot-fig"><span class="std std-numref">Fig. 15</span></a>. This tells us how many results we would expect in an image under the null, if we used different thresholds. For instance, picking a threshold of 2.5 would lead to an average of 5 false positive blobs each time we ran our experiment. The trick to using this information is to remember that the definition of the FWER is the probability of <em>one or more false-positives</em>. So if we find the threshold where the EC = 1, that tells us the threshold for an approximate FWER of 100% (i.e. a false positive every single time).</p>
+<figure class="align-default" id="ec-plot-fig">
+<a class="reference internal image-reference" href="_images/ec-plot.png"><img alt="_images/ec-plot.png" src="_images/ec-plot.png" style="width: 800px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 15 </span><span class="caption-text">Illustration of the EC against different threshold values.</span><a class="headerlink" href="#ec-plot-fig" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The point where EC = 1 is in the tail of the graph, a shown in <a class="reference internal" href="#ec-is-1-fig"><span class="std std-numref">Fig. 16</span></a>. So in this example, if we used a threshold of z = 3.15 we would expect an average of at least one false-positive results in our image. So a threshold of z = 3.15 is equivalent to a FWER of 100%. In order to get to a FWER of 5% we simply keep increasing the threshold until we get EC = 0.05. Based on the graph in <a class="reference internal" href="#ec-is-1-fig"><span class="std std-numref">Fig. 16</span></a>, this would be <span class="math notranslate nohighlight">\(z \approx 4\)</span>. So if we threshold our image using this threshold, then we should only see one or more false positives 5% of the time. This threshold therefore controls the FWER at 5%.</p>
+<figure class="align-default" id="ec-is-1-fig">
+<a class="reference internal image-reference" href="_images/ec-is-1.png"><img alt="_images/ec-is-1.png" src="_images/ec-is-1.png" style="width: 800px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 16 </span><span class="caption-text">Illustration of how the tail of the EC plot can be used to determine the threshold needed for FWER = 0.05.</span><a class="headerlink" href="#ec-is-1-fig" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 </div>
 </section>
 </section>
