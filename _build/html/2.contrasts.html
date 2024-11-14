@@ -488,6 +488,13 @@ t = \frac{\mathbf{L}\hat{\boldsymbol{\beta}}}{\sigma\sqrt{\mathbf{L}(\mathbf{X}^
 </section>
 <section id="forming-a-statistical-map-using-contrasts">
 <h2>Forming a Statistical Map Using Contrasts<a class="headerlink" href="#forming-a-statistical-map-using-contrasts" title="Link to this heading">#</a></h2>
+<p>Application of the contrasts framework to images is a straightforward extension of what we have already seen. We start by forming the numerator of <span class="math notranslate nohighlight">\(t\)</span> by using the contrast weights at each voxel to create a linear combination of parameter estimates. The resulting image is an image of contrast values, which is saved in a file called <code class="docutils literal notranslate"><span class="pre">con_*.nii</span></code> by <code class="docutils literal notranslate"><span class="pre">SPM</span></code>. These are numbered as you can specify as many contrasts as you like (e.g. <code class="docutils literal notranslate"><span class="pre">con_0001.nii</span></code>, <code class="docutils literal notranslate"><span class="pre">con_0002.nii</span></code>, <code class="docutils literal notranslate"><span class="pre">con_0003.nii</span></code> etc.). The process of creating an image of contrast values is illustrated in <a class="reference internal" href="#con-vals-images-fig"><span class="std std-numref">Fig. 5</span></a>.</p>
+<figure class="align-default" id="con-vals-images-fig">
+<a class="reference internal image-reference" href="_images/con-vals-images.png"><img alt="_images/con-vals-images.png" src="_images/con-vals-images.png" style="width: 800px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 5 </span><span class="caption-text">Illustration of creating a contrast map using images.</span><a class="headerlink" href="#con-vals-images-fig" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 </section>
 
