@@ -7,4 +7,5 @@ chapters:
 - file: 1.images-to-inference
 - file: 2.contrasts
 - file: 3.thresholding-maps
+- file: 4.multiple-testing
 - file: 7.summary-quiz
