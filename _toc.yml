@@ -6,4 +6,5 @@ root: 0.intro
 chapters:
 - file: 1.images-to-inference
 - file: 2.contrasts
+- file: 3.thresholding-maps
 - file: 7.summary-quiz
