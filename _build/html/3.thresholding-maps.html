@@ -62,7 +62,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = '3.thresholding-maps';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Summary and Quiz" href="7.summary-quiz.html" />
+    <link rel="next" title="The Multiple Testing Problem" href="4.multiple-testing.html" />
     <link rel="prev" title="Contrasts" href="2.contrasts.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -185,6 +185,8 @@
 <li class="toctree-l1"><a class="reference internal" href="1.images-to-inference.html">From Images to Inference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="2.contrasts.html">Contrasts</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Thresholding Statistical Maps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4.multiple-testing.html">The Multiple Testing Problem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="5.solutions-multiple-testing.html">Solutions to the Multiple Testing Problem</a></li>
 <li class="toctree-l1"><a class="reference internal" href="7.summary-quiz.html">Summary and Quiz</a></li>
 </ul>
 
@@ -394,6 +396,7 @@ document.write(`
 </figcaption>
 </figure>
 <p>In terms of the cut-off value we choose, this can either be a value within the image itself (e.g. a value of <span class="math notranslate nohighlight">\(t\)</span>), a value from another image that is in-alignment, or a value that can be calculated at each voxel based on the image. For our image of <span class="math notranslate nohighlight">\(t\)</span>-statistics, it makes most sense to threshold based on the associated <span class="math notranslate nohighlight">\(p\)</span>-value at each voxel. For example, the image in <a class="reference internal" href="#threshold-t-05-fig"><span class="std std-numref">Fig. 8</span></a> shows the process of thresholding an image of <span class="math notranslate nohighlight">\(t\)</span>-statistics based on setting any voxel where <span class="math notranslate nohighlight">\(p &gt; 0.05\)</span> equal to 0. Voxels with a value of 0 will then typically be displayed as transparent by most image viewing software.</p>
+<iframe src=spm152.html" width="800" height="600" frameborder="0" scrolling="no" title=""></iframe>
 <figure class="align-default" id="threshold-t-05-fig">
 <a class="reference internal image-reference" href="_images/threshold-t-05.png"><img alt="_images/threshold-t-05.png" src="_images/threshold-t-05.png" style="width: 600px;" /></a>
 <figcaption>
@@ -455,11 +458,11 @@ document.write(`
       </div>
     </a>
     <a class="right-next"
-       href="7.summary-quiz.html"
+       href="4.multiple-testing.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Summary and Quiz</p>
+        <p class="prev-next-title">The Multiple Testing Problem</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
