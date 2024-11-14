@@ -392,13 +392,12 @@ document.write(`
 <a class="reference internal image-reference" href="_images/upper-tail-p.png"><img alt="_images/upper-tail-p.png" src="_images/upper-tail-p.png" style="width: 800px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 7 </span><span class="caption-text">Illustration of how the <span class="math notranslate nohighlight">\(p\)</span>-values for <span class="math notranslate nohighlight">\(t\)</span>-statistics calculated in SPM are <em>upper-tail</em>, meaning we only significant effects for <span class="math notranslate nohighlight">\(t\)</span>-values that are both <em>large</em> and <em>positive</em>.</span><a class="headerlink" href="#upper-tail-p-fig" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-</div>
+<div class="legend">
 <p>In terms of interpretation, using only upper-tail p-values means that we will only see significant results when the direction of the contrast matches the direction of the effect. To understand what this means, consider a simple example where we have Condition A and Condition B. If we use the contrast weights [1 -1] we will only see significant effects in places where the signal for A is larger than B. Conversely, if we used the contrast weights [-1 1] we would only see significant effects in places where the signal for B is larger than A.</p>
 <p>So we can test different directional hypotheses, depending upon the sign of the weights. Because of this, it is usual to describe these contrasts in terms of the direction they are testing. So [1 -1] would be described as “Condition A &gt; Condition B” and [-1 1] could be described as “Condition B &gt; Condition A”. This will be clearer once you have a go at specifying contrasts in SPM, but just try and remember that t-contrasts in SPM are directional one-tailed tests, and that the sign of the weights determines the direction of effect that you are testing.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
+</div>
+</figcaption>
+</figure>
 </div>
 </section>
 
