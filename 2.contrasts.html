@@ -495,6 +495,14 @@ t = \frac{\mathbf{L}\hat{\boldsymbol{\beta}}}{\sigma\sqrt{\mathbf{L}(\mathbf{X}^
 <p><span class="caption-number">Fig. 5 </span><span class="caption-text">Illustration of creating a contrast map using images.</span><a class="headerlink" href="#con-vals-images-fig" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
+<p>Once we have the image of contrast values, all we need is an image of standard errors for the contrast. We then divide the two, voxel-by-voxel, to form our statistical parametric map. This is shown in <a class="reference internal" href="#t-from-imagess-fig"><span class="std std-numref">Fig. 6</span></a>.</p>
+<figure class="align-default" id="t-from-imagess-fig">
+<a class="reference internal image-reference" href="_images/t-from-images.png"><img alt="_images/t-from-images.png" src="_images/t-from-images.png" style="width: 800px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 6 </span><span class="caption-text">Illustration of creating an SPM{t} map from an image of contrast values and an image of standard errors.</span><a class="headerlink" href="#t-from-imagess-fig" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>This is exactly the same procedure we saw earlier with a single parameter estimate. Hopefully it is clear how the contrast framework allows us to construct <span class="math notranslate nohighlight">\(t\)</span>-statistic images that are based on more flexible hypotheses about our parameter estimates. This should allow us to ask a wider range of questions about the values of our parameter estimates, giving us scope to perform inference that goes beyond just considering each parameter estimate separately. The weights in <span class="math notranslate nohighlight">\(\mathbf{L}\)</span> are ultimately what we give <code class="docutils literal notranslate"><span class="pre">SPM</span></code> to tell it what question to ask. As such, you will get more comfortable about thinking about hypotheses in this way as you get more experience using <code class="docutils literal notranslate"><span class="pre">SPM</span></code>.</p>
 </section>
 </section>
 
