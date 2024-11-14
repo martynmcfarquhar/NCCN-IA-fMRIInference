@@ -430,12 +430,32 @@ document.write(`
 </div>
 <section id="bonferroni-correction">
 <h3>Bonferroni Correction<a class="headerlink" href="#bonferroni-correction" title="Link to this heading">#</a></h3>
+<p>One of the simplest ways of applying an FWE-correction is to use a Bonferroni procedure. Here, we simply create a new threshold by dividing the old threshold by the number of comparisons. So, for our image of 100,000 voxels, we have</p>
+<div class="math notranslate nohighlight">
+\[
+\alpha_{\text{BONF}} = \frac{0.05}{m} = \frac{0.05}{100000} = 0.0000005.
+\]</div>
+<p>Now, we only count voxels where <span class="math notranslate nohighlight">\(p &lt; 0.0000005\)</span> as significant. Hopefully it is clear just from this example how <em>strict</em> this approach is. It will indeed control the FWER, however, the Bonferroni correction is designed for cases where our tests are independent of one another. This means the value of one test is not connected in any way to the value of another. In fMRI, however, our tests have a degree of correlation because tests in neighbouring voxels are likely to be very similar. This is where the concept of multiple comparisons becomes a bit hazy. If two tests are perfectly correlated, does it still count as two comparisons or one? If those two tests are correlated, but not perfectly, how many tests does that count as? All of this is to say that if our tests are correlated then there should be some way of having a less severe correction, because the number of tests is not equivalent to the number of voxels.</p>
 </section>
 <section id="random-field-theory-correction">
 <h3>Random Field Theory Correction<a class="headerlink" href="#random-field-theory-correction" title="Link to this heading">#</a></h3>
+<p>A solution to this issue, that allows us to take the degree of correlation in an image into account, is given by the application of something called <em>random field theory</em>. This was the crowning achievement of the SPM developers and is one of the most significant additions to the world of neuroimaging. However, there is no getting around the fact that it is <em>complicated</em>. In fact, you could go as far to say that many of the people who work with fMRI data do not really understand how this works. By-and-large, they just assume that it does work.</p>
+<p>It is useful to have some sense of RFT correction, which is explained more fully in the advanced drop-down below. The simple explanation is that this method is able to quantify the degree of correlation in an image by calculating its <em>smoothness</em>. This can then be used to redefine the image in terms of <em>resolution-elements</em> (known as RESELS), which quantify the resolution of the image in terms of independent units. These RESELs are then used to determine the threshold needed to achieve FWER = 5%, using something known as the <em>Euler Characteristic</em> (EC), which quantifies the expected number of clusters under the null hypothesis.  Practically speaking, however, you do not need to know how this works to use <code class="docutils literal notranslate"><span class="pre">SPM</span></code>. If you are interested, read the drop-down below and consult the paper by <a class="reference external" href="https://pubmed.ncbi.nlm.nih.gov/14599004/">Nichols &amp; Hayasaka (2003)</a>.</p>
 <div class="dropdown admonition">
 <p class="admonition-title">Advanced: How Does Random Field Theory Correction Work?</p>
-<p>Beats me, I just work here.</p>
+<p>To understand random field theory in more detail, we start by breaking the process into 3 steps:</p>
+<ul class="simple">
+<li><p>Estimate the smoothness of an image to quantify the correlation between voxels</p></li>
+<li><p>Enter that smoothness value into an equation to computer the expected Euler characteristic at different thresholds</p></li>
+<li><p>Find the threshold where the Euler characteristic tells you that only 5% of equivalent images would be expected to show at least one result. This becomes your multiple comparison correction threshold.</p></li>
+</ul>
+<p>To unpack these steps, let us examine an image in 2D. Imagine an image that was just pure noise (i.e. a null image). If the values in that image were drawn from a Gaussian distribution, it might look something like the <em>left</em> of <a class="reference internal" href="#smoothed-grf-fig"><span class="std std-numref">Fig. 13</span></a>. As it stands, this is not a good representation of a null fMRI image, because we would expect a degree of correlation between neighbouring voxels (even if there was nothing going on). So let us apply some smoothing to the image to create that correlation. This leads to the image on the <em>right</em> of <a class="reference internal" href="#smoothed-grf-fig"><span class="std std-numref">Fig. 13</span></a>.</p>
+<figure class="align-default" id="smoothed-grf-fig">
+<a class="reference internal image-reference" href="_images/smoothed-grf.png"><img alt="_images/smoothed-grf.png" src="_images/smoothed-grf.png" style="width: 800px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 13 </span><span class="caption-text">Illustration of an un-smoothed (<em>left</em>) and smoothed (<em>right</em>) Gaussian random field.</span><a class="headerlink" href="#smoothed-grf-fig" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 </div>
 </section>
 </section>
