@@ -62,7 +62,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = '4.multiple-testing';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Summary and Quiz" href="7.summary-quiz.html" />
+    <link rel="next" title="Solutions to the Multiple Testing Problem" href="5.solutions-multiple-testing.html" />
     <link rel="prev" title="Thresholding Statistical Maps" href="3.thresholding-maps.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -186,6 +186,7 @@
 <li class="toctree-l1"><a class="reference internal" href="2.contrasts.html">Contrasts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="3.thresholding-maps.html">Thresholding Statistical Maps</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">The Multiple Testing Problem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="5.solutions-multiple-testing.html">Solutions to the Multiple Testing Problem</a></li>
 <li class="toctree-l1"><a class="reference internal" href="7.summary-quiz.html">Summary and Quiz</a></li>
 </ul>
 
@@ -429,11 +430,11 @@ P(6) = 1 - (1-0.167)^{m},
 \[
 P(6) = 1 - (1-0.167)^{2} = 1 - 0.69 = 0.31, 
 \]</div>
-<p>meaning our chance of getting a 6 had increased from <span class="math notranslate nohighlight">\(\approx 16.7\%\)</span> to <span class="math notranslate nohighlight">\(\approx 31\%\)</span>. We can see this visually in <a class="reference internal" href="#dice-fig"><span class="std std-numref">Fig. 10</span></a>. Here, all the 36 possible combinations of outcomes across 2 dice are shown. If you count the number of outcomes where one of the dice shows a 6, you get <span class="math notranslate nohighlight">\(11/36 \approx 0.31\)</span>. So we can see that there is a <span class="math notranslate nohighlight">\(31\%\)</span> chance of getting a 6 now.</p>
+<p>meaning our chance of getting a 6 had increased from <span class="math notranslate nohighlight">\(\approx 16.7\%\)</span> to <span class="math notranslate nohighlight">\(\approx 31\%\)</span>. We can see this visually in <a class="reference internal" href="#dice-fig"><span class="std std-numref">Fig. 9</span></a>. Here, all the 36 possible combinations of outcomes across 2 dice are shown. If you count the number of outcomes where one of the dice shows a 6, you get <span class="math notranslate nohighlight">\(11/36 \approx 0.31\)</span>. So we can see that there is a <span class="math notranslate nohighlight">\(31\%\)</span> chance of getting a 6 now.</p>
 <figure class="align-default" id="dice-fig">
 <a class="reference internal image-reference" href="_images/dice.png"><img alt="_images/dice.png" src="_images/dice.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 10 </span><span class="caption-text">Visualisation of all the possible outcomes from rolling two dice.</span><a class="headerlink" href="#dice-fig" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 9 </span><span class="caption-text">Visualisation of all the possible outcomes from rolling two dice.</span><a class="headerlink" href="#dice-fig" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>If we increase the number of dice to 10, we then get</p>
@@ -454,11 +455,11 @@ P(6) = 1 - (1-0.167)^{10} = 1 - 0.16 = 0.84,
 \]</div>
 <p>So we have a 100% guarantee that we will see significant results, <em>even if the null hypothesis is true everywhere in the brain</em>.</p>
 <p>From this it should be clear that we have a problem, but what does that mean practically in terms of the number of false positive results? In the worst case scenario, this could mean 5% of the voxels are significant when the null is true. For our example image of 100,000 voxels, this could mean 5,000 false-positives in an image. This is not a small number of mistakes to make.</p>
-<p>This situation is illustrated in <a class="reference internal" href="#poldrack-uncorr-thresh-fig"><span class="std std-numref">Fig. 11</span></a> from <a class="reference external" href="https://www-cambridge-org.manchester.idm.oclc.org/core/books/handbook-of-functional-mri-data-analysis/8EDF966C65811FCCC306F7C916228529#">Poldrack, Mumford and Nichols (2011)</a>. The voxels within the yellow circle represent places where there is a real effect, and the voxels outside the yellow circle represent places with no effect. When thresholding using their example of 10% (<span class="math notranslate nohighlight">\(\alpha = 0.10\)</span>), on average around 10% of the voxels with no effect will survive the threshold and thus indicate a significant result.</p>
+<p>This situation is illustrated in <a class="reference internal" href="#poldrack-uncorr-thresh-fig"><span class="std std-numref">Fig. 10</span></a> from <a class="reference external" href="https://www-cambridge-org.manchester.idm.oclc.org/core/books/handbook-of-functional-mri-data-analysis/8EDF966C65811FCCC306F7C916228529#">Poldrack, Mumford and Nichols (2011)</a>. The voxels within the yellow circle represent places where there is a real effect, and the voxels outside the yellow circle represent places with no effect. When thresholding using their example of 10% (<span class="math notranslate nohighlight">\(\alpha = 0.10\)</span>), on average around 10% of the voxels with no effect will survive the threshold and thus indicate a significant result.</p>
 <figure class="align-default" id="poldrack-uncorr-thresh-fig">
 <a class="reference internal image-reference" href="_images/poldrack-uncorr-thresh.png"><img alt="_images/poldrack-uncorr-thresh.png" src="_images/poldrack-uncorr-thresh.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 11 </span><span class="caption-text">Visualisation of thresholding an image that contains true activations (within the circle) and noise (outside the circle) using <span class="math notranslate nohighlight">\(p &lt; 0.10\)</span>. On average, across repeats, 10% of the noise voxels will be significant when using this threshold.</span><a class="headerlink" href="#poldrack-uncorr-thresh-fig" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 10 </span><span class="caption-text">Visualisation of thresholding an image that contains true activations (within the circle) and noise (outside the circle) using <span class="math notranslate nohighlight">\(p &lt; 0.10\)</span>. On average, across repeats, 10% of the noise voxels will be significant when using this threshold.</span><a class="headerlink" href="#poldrack-uncorr-thresh-fig" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>In this example, we can obviously see which results are <em>real</em> and which are <em>false</em>, but in a real image we would have no idea. Notice as well that the false positives can cluster together, thanks in part to the smoothing, and thus can give the impression of true regional activations. This is the insidious nature of false positives. So, overall, this is a pretty serious problem to have. With this in mind, it is not surprising that so much effort over the years has gone into developing correction techniques to try and get around this problem. These ‘’solutions’’ will be the focus of the next section.</p>
@@ -505,11 +506,11 @@ P(6) = 1 - (1-0.167)^{10} = 1 - 0.16 = 0.84,
       </div>
     </a>
     <a class="right-next"
-       href="7.summary-quiz.html"
+       href="5.solutions-multiple-testing.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Summary and Quiz</p>
+        <p class="prev-next-title">Solutions to the Multiple Testing Problem</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
