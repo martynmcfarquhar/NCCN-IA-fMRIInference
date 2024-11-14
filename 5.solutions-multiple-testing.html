@@ -521,7 +521,7 @@ R = \frac{V}{\text{FWHM}_{x} \times \text{FWHM}_{y} \times \text{FWHM}_{z}} = \f
 </section>
 <section id="choosing-a-threshold">
 <h2>Choosing a Threshold<a class="headerlink" href="#choosing-a-threshold" title="Link to this heading">#</a></h2>
-<p>The three approaches described in this section all differ in terms of their balance of false positives and false negatives. The viewers below illustrate the application of these techniques to the results of a single subject looking at pictures of food compared to non-food. Although the general finding is that, in terms of how liberal the corrections are, uncorrected &gt; voxel-wise FDR &gt; topological FDR &gt; FWE, in this instance the voxel-wise FDR is the most liberal approach.</p>
+<p>The three approaches described in this section all differ in terms of their balance of false positives and false negatives. The viewers below illustrate the application of these techniques to the results of a single subject looking at pictures of food compared to non-food. In general, if we were to order the correction techniques from most liberal to least liberal, we would say uncorrected &gt; voxel-wise FDR &gt; topological FDR &gt; FWE. However, in this instance, the voxel-wise FDR is the most liberal in terms of the number of voxels that have survived..</p>
 <section id="uncorrected-p-0-001">
 <h3>Uncorrected <em>p</em> &lt; 0.001<a class="headerlink" href="#uncorrected-p-0-001" title="Link to this heading">#</a></h3>
 <iframe src="p-uncorr-001.html" width="800" height="600" frameborder="0" scrolling="no" title=""></iframe>
@@ -537,12 +537,6 @@ R = \frac{V}{\text{FWHM}_{x} \times \text{FWHM}_{y} \times \text{FWHM}_{z}} = \f
 <section id="fwe-corrected-p-0-05">
 <h3>FWE-corrected <em>p</em> &lt; 0.05<a class="headerlink" href="#fwe-corrected-p-0-05" title="Link to this heading">#</a></h3>
 <iframe src="p-fwe-05.html" width="800" height="600" frameborder="0" scrolling="no" title=""></iframe>
-<figure class="align-default" id="thresh-comp-fig">
-<a class="reference internal image-reference" href="_images/thresh-comp.png"><img alt="_images/thresh-comp.png" src="_images/thresh-comp.png" style="width: 700px;" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 18 </span><span class="caption-text">Comparison of the main thresholding methods available in <code class="docutils literal notranslate"><span class="pre">SPM</span></code>.</span><a class="headerlink" href="#thresh-comp-fig" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
 <p>Given all the information in this section, which threshold do we choose?</p>
