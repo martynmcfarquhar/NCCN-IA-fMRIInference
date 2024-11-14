@@ -57,6 +57,8 @@
     <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '3.thresholding-maps';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -385,9 +387,18 @@ document.write(`
 <h1>Thresholding Statistical Maps<a class="headerlink" href="#thresholding-statistical-maps" title="Link to this heading">#</a></h1>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p>Before moving on, there is one important detail about how p-values are calculated for t statistics in SPM that we need to understand. When SPM calculates a p-value for an associated t-value, it only uses the upper-tail of the null distribution. What does this mean? Practically, it means that the t-values need to be positive in order for the p-value to be significant. As shown below, a negative t-statistic will always result in a large p-value, even though this represent the same magnitude of effect, just in the opposite direction. Technically, this makes any hypothesis test in SPM that uses t-statistics a one-tailed hypotheses.</p>
+<p>Before moving on, there is one important detail about how p-values are calculated for t statistics in SPM that we need to understand. When SPM calculates a p-value for an associated t-value, it only uses the upper-tail of the null distribution. What does this mean? Practically, it means that the t-values need to be positive in order for the p-value to be significant. As shown in <a class="reference internal" href="#upper-tail-p-fig"><span class="std std-numref">Fig. 7</span></a>, a negative t-statistic will always result in a large p-value, even though this represent the same magnitude of effect, just in the opposite direction. Technically, this makes any hypothesis test in SPM that uses t-statistics a one-tailed hypotheses.</p>
+<figure class="align-default" id="upper-tail-p-fig">
+<a class="reference internal image-reference" href="_images/upper-tail-p.png"><img alt="_images/upper-tail-p.png" src="_images/upper-tail-p.png" style="width: 800px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 7 </span><span class="caption-text">Illustration of how the <span class="math notranslate nohighlight">\(p\)</span>-values for <span class="math notranslate nohighlight">\(t\)</span>-statistics calculated in SPM are <em>upper-tail</em>, meaning we only significant effects for <span class="math notranslate nohighlight">\(t\)</span>-values that are both <em>large</em> and <em>positive</em>.</span><a class="headerlink" href="#upper-tail-p-fig" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</div>
 <p>In terms of interpretation, using only upper-tail p-values means that we will only see significant results when the direction of the contrast matches the direction of the effect. To understand what this means, consider a simple example where we have Condition A and Condition B. If we use the contrast weights [1 -1] we will only see significant effects in places where the signal for A is larger than B. Conversely, if we used the contrast weights [-1 1] we would only see significant effects in places where the signal for B is larger than A.</p>
 <p>So we can test different directional hypotheses, depending upon the sign of the weights. Because of this, it is usual to describe these contrasts in terms of the direction they are testing. So [1 -1] would be described as “Condition A &gt; Condition B” and [-1 1] could be described as “Condition B &gt; Condition A”. This will be clearer once you have a go at specifying contrasts in SPM, but just try and remember that t-contrasts in SPM are directional one-tailed tests, and that the sign of the weights determines the direction of effect that you are testing.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
 </div>
 </section>
 
