@@ -383,6 +383,7 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-general-multiple-testing-problem">The General Multiple Testing Problem</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-multiple-testing-problem-in-imaging">The Multiple Testing Problem in Imaging</a></li>
 </ul>
             </nav>
         </div>
@@ -443,6 +444,22 @@ P(6) = 1 - (1-0.167)^{10} = 1 - 0.16 = 0.84,
 <p>so now there is an <span class="math notranslate nohighlight">\(84\%\)</span> chance of getting a 6. If we keep increasing the number of dice, eventually we hit a point where we are basically guaranteed to see at least one 6 every time we roll. Suddenly, the rare(ish) event of a 6 is suddenly not rare at all.</p>
 <p>To connect this with the multiple testing problem, every time we repeat an experiment and then test the null hypothesis, we are rolling the dice again. If we then look across all the tests we have performed, we have to understand that the probability of seeing at least one significant <span class="math notranslate nohighlight">\(p\)</span>-value goes up and up until we hit a point where it is all but guaranteed to find something significant, <em>even if the null hypothesis is true</em>.</p>
 </div>
+</section>
+<section id="the-multiple-testing-problem-in-imaging">
+<h2>The Multiple Testing Problem in Imaging<a class="headerlink" href="#the-multiple-testing-problem-in-imaging" title="Link to this heading">#</a></h2>
+<p>The problem we have in imaging is that the hypothetical situation of repeating the same experiment again and again is exactly what we have done by fitting the same model at each voxel. When looking across an entire image, we are seeing our experiment repeated perhaps 100,000 times. So what are the chances that at least one voxel will be significant at the traditional 5% level? With 100,000 tests we have</p>
+<div class="math notranslate nohighlight">
+\[
+1 - (1 - 0.05)^{100000} = 1 - 0 = 1.
+\]</div>
+<p>So we have a 100% guarantee that we will see significant results, <em>even if the null hypothesis is true everywhere in the brain</em>.</p>
+<p>From this it should be clear that we have a problem, but what does that mean practically in terms of the number of false positive results? In the worst case scenario, this could mean 5% of the voxels are significant when the null is true. For our example image of 100,000 voxels, this could mean 5,000 false-positives in an image. This is illustrated in <a class="reference internal" href="#poldrack-uncorr-thresh-fig"><span class="std std-numref">Fig. 11</span></a> from <a class="reference external" href="https://www-cambridge-org.manchester.idm.oclc.org/core/books/handbook-of-functional-mri-data-analysis/8EDF966C65811FCCC306F7C916228529#">Poldrack, Mumford and Nichols (2011)</a>. The voxels within the circle represent places where there is a real effect, and the voxels outside the circle represent places with no effect. When thresholding using their example of 10% (<span class="math notranslate nohighlight">\(\alpha = 0.10\)</span>), on average around 10% of the voxels with no effect will survive the threshold and thus indicate a significant result.</p>
+<figure class="align-default" id="poldrack-uncorr-thresh-fig">
+<a class="reference internal image-reference" href="_images/poldrack-uncorr-thresh.png"><img alt="_images/poldrack-uncorr-thresh.png" src="_images/poldrack-uncorr-thresh.png" style="width: 800px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 11 </span><span class="caption-text">Visualisation of thresholding an image that contains true activations (within the circle) and noise (outside the circle) using <span class="math notranslate nohighlight">\(p &lt; 0.10\)</span>. On average, across repeats, 10% of the noise voxels will be significant when using this threshold.</span><a class="headerlink" href="#poldrack-uncorr-thresh-fig" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 </section>
 
@@ -511,6 +528,7 @@ P(6) = 1 - (1-0.167)^{10} = 1 - 0.16 = 0.84,
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-general-multiple-testing-problem">The General Multiple Testing Problem</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-multiple-testing-problem-in-imaging">The Multiple Testing Problem in Imaging</a></li>
 </ul>
   </nav></div>
 
