@@ -385,6 +385,7 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#features-of-an-image">Features of an Image</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#voxel-level-inference">Voxel-level Inference</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cluster-level-inference">Cluster-level Inference</a></li>
 </ul>
             </nav>
         </div>
@@ -433,6 +434,14 @@ document.write(`
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Voxel-level inference in <code class="docutils literal notranslate"><span class="pre">SPM</span></code> is labeled as <em>peak-level</em>. The distinction between a voxel and a peak is really about the fact that a peak is a topological feature of the data, whereas a voxel is not. If this is confusing, do not worry about it. Just know that there is a distinction between voxels and peaks and that the terms are not necessarily interchangeable. If you are interested, <a class="reference external" href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3221040/">Chumbley <em>et al.</em> (2010)</a> discuss this in more detail.</p>
+</div>
+</section>
+<section id="cluster-level-inference">
+<h2>Cluster-level Inference<a class="headerlink" href="#cluster-level-inference" title="Permalink to this heading">#</a></h2>
+<p>An alternative to focusing on individual voxels is to instead focus on the <em>spatial extent</em> of the signal. In order to do this, we need to first isolate the signal of interest by thresholding the image. By specifying an intial threshold (<span class="math notranslate nohighlight">\(u_c\)</span>) we create <em>clusters</em> of voxels, defined as all the voxels touching each other after thresholding. Once we have done this, we can then assess the extent of the activation by counting the number of voxels within a cluster, as illustrated below.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Clusters are based on voxels touching each other after thresholding. Note that different software uses different definition of “touching”. For instance, we could count touching as including only the <em>faces</em> and <em>edges</em> of voxels, or we could also include voxels where the <em>corners</em> touch. <code class="docutils literal notranslate"><span class="pre">SPM</span></code> uses an 18-connectivity scheme, which includes all faces (6) and all edges (12), but does not includer corners.</p>
 </div>
 </section>
 </section>
@@ -503,6 +512,7 @@ document.write(`
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#features-of-an-image">Features of an Image</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#voxel-level-inference">Voxel-level Inference</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cluster-level-inference">Cluster-level Inference</a></li>
 </ul>
   </nav></div>
 
