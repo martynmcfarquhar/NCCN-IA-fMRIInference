@@ -1,12 +1,13 @@
 
+
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="./" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>The Multiple Testing Problem &#8212; fMRI Single-subject Statistical Modelling</title>
   
@@ -28,35 +29,33 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.4cbf315f70debaebd550c87a6162cf0f.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="_static/doctools.js?v=9a2dae69"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="_static/copybutton.js?v=f281be69"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script src="_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '4.multiple-testing';</script>
@@ -187,6 +186,7 @@
 <li class="toctree-l1"><a class="reference internal" href="3.thresholding-maps.html">Thresholding Statistical Maps</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">The Multiple Testing Problem</a></li>
 <li class="toctree-l1"><a class="reference internal" href="5.solutions-multiple-testing.html">Solutions to the Multiple Testing Problem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6.levels-inference.html">Levels of Inference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="7.summary-quiz.html">Summary and Quiz</a></li>
 </ul>
 
@@ -397,10 +397,10 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="the-multiple-testing-problem">
-<h1>The Multiple Testing Problem<a class="headerlink" href="#the-multiple-testing-problem" title="Link to this heading">#</a></h1>
+<h1>The Multiple Testing Problem<a class="headerlink" href="#the-multiple-testing-problem" title="Permalink to this heading">#</a></h1>
 <p>So far, we have managed to define a framework for testing hypotheses using contrasts. We have seen how to turn these contrasts into maps of <span class="math notranslate nohighlight">\(t\)</span>-statistics, and have seen how we can then threshold these maps using the associated <span class="math notranslate nohighlight">\(p\)</span>-values using a threshold of <span class="math notranslate nohighlight">\(p &lt; 0.05\)</span>. Although it may seem like we are essentially done, those of you with some statistical knowledge may have already spotted a big issue known as the <em>multiple testing problem</em>.</p>
 <section id="the-general-multiple-testing-problem">
-<h2>The General Multiple Testing Problem<a class="headerlink" href="#the-general-multiple-testing-problem" title="Link to this heading">#</a></h2>
+<h2>The General Multiple Testing Problem<a class="headerlink" href="#the-general-multiple-testing-problem" title="Permalink to this heading">#</a></h2>
 <p>To understand the multiple testing problem, consider what a significance threshold of 5% actually means. In the world of frequentist inference, if we repeated our experiment multiple times and performed the same hypothesis test, we would only expect a significant <span class="math notranslate nohighlight">\(p\)</span>-value to occur 5% of the time if the null hypothesis was true. A small <span class="math notranslate nohighlight">\(p\)</span>-value therefore means either something rare has happened, or the null hypothesis is false.</p>
 <p>This is fine for a <em>single</em> hypothesis test, but if we did keep repeating the experiment over and over again, then suddenly those rare events are not so rare anymore. To see this, consider that the probability of at least one result from all those repeated experiments being significant is given by</p>
 <div class="math notranslate nohighlight">
@@ -434,7 +434,7 @@ P(6) = 1 - (1-0.167)^{2} = 1 - 0.69 = 0.31,
 <figure class="align-default" id="dice-fig">
 <a class="reference internal image-reference" href="_images/dice.png"><img alt="_images/dice.png" src="_images/dice.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 9 </span><span class="caption-text">Visualisation of all the possible outcomes from rolling two dice.</span><a class="headerlink" href="#dice-fig" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 9 </span><span class="caption-text">Visualisation of all the possible outcomes from rolling two dice.</span><a class="headerlink" href="#dice-fig" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>If we increase the number of dice to 10, we then get</p>
@@ -447,7 +447,7 @@ P(6) = 1 - (1-0.167)^{10} = 1 - 0.16 = 0.84,
 </div>
 </section>
 <section id="the-multiple-testing-problem-in-imaging">
-<h2>The Multiple Testing Problem in Imaging<a class="headerlink" href="#the-multiple-testing-problem-in-imaging" title="Link to this heading">#</a></h2>
+<h2>The Multiple Testing Problem in Imaging<a class="headerlink" href="#the-multiple-testing-problem-in-imaging" title="Permalink to this heading">#</a></h2>
 <p>The problem we have in imaging is that the hypothetical situation of repeating the same experiment again and again is exactly what we have done by fitting the same model at each voxel. When looking across an entire image, we are seeing our experiment repeated perhaps 100,000 times. So what are the chances that at least one voxel will be significant at the traditional 5% level? With 100,000 tests we have</p>
 <div class="math notranslate nohighlight">
 \[
@@ -459,7 +459,7 @@ P(6) = 1 - (1-0.167)^{10} = 1 - 0.16 = 0.84,
 <figure class="align-default" id="poldrack-uncorr-thresh-fig">
 <a class="reference internal image-reference" href="_images/poldrack-uncorr-thresh.png"><img alt="_images/poldrack-uncorr-thresh.png" src="_images/poldrack-uncorr-thresh.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 10 </span><span class="caption-text">Visualisation of thresholding an image that contains true activations (within the circle) and noise (outside the circle) using <span class="math notranslate nohighlight">\(p &lt; 0.10\)</span>. On average, across repeats, 10% of the noise voxels will be significant when using this threshold.</span><a class="headerlink" href="#poldrack-uncorr-thresh-fig" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 10 </span><span class="caption-text">Visualisation of thresholding an image that contains true activations (within the circle) and noise (outside the circle) using <span class="math notranslate nohighlight">\(p &lt; 0.10\)</span>. On average, across repeats, 10% of the noise voxels will be significant when using this threshold.</span><a class="headerlink" href="#poldrack-uncorr-thresh-fig" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>In this example, we can obviously see which results are <em>real</em> and which are <em>false</em>, but in a real image we would have no idea. Notice as well that the false positives can cluster together, thanks in part to the smoothing, and thus can give the impression of true regional activations. This is the insidious nature of false positives. So, overall, this is a pretty serious problem to have. With this in mind, it is not surprising that so much effort over the years has gone into developing correction techniques to try and get around this problem. These ‘’solutions’’ will be the focus of the next section.</p>

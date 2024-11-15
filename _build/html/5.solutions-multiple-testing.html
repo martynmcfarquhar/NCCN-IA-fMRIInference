@@ -1,12 +1,13 @@
 
+
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="./" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Solutions to the Multiple Testing Problem &#8212; fMRI Single-subject Statistical Modelling</title>
   
@@ -28,35 +29,33 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.4cbf315f70debaebd550c87a6162cf0f.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="_static/doctools.js?v=9a2dae69"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="_static/copybutton.js?v=f281be69"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script src="_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '5.solutions-multiple-testing';</script>
@@ -410,25 +409,25 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="solutions-to-the-multiple-testing-problem">
-<h1>Solutions to the Multiple Testing Problem<a class="headerlink" href="#solutions-to-the-multiple-testing-problem" title="Link to this heading">#</a></h1>
+<h1>Solutions to the Multiple Testing Problem<a class="headerlink" href="#solutions-to-the-multiple-testing-problem" title="Permalink to this heading">#</a></h1>
 <p>As mentioned at the end of the previous section, the multiple testing problem presents a large barrier to using the approach we have discussed so far. Luckily, there are some solutions available. In this section we will discuss the three main approaches you will need when working with <code class="docutils literal notranslate"><span class="pre">SPM</span></code>.</p>
 <section id="solution-1-a-stricter-threshold">
-<h2>Solution 1: A Stricter Threshold<a class="headerlink" href="#solution-1-a-stricter-threshold" title="Link to this heading">#</a></h2>
+<h2>Solution 1: A Stricter Threshold<a class="headerlink" href="#solution-1-a-stricter-threshold" title="Permalink to this heading">#</a></h2>
 <p>The first approach we might consider is to simply use a stricter threshold than 5%. Typically, in imaging, the most liberal threshold we can get away with is <span class="math notranslate nohighlight">\(p &lt; 0.001\)</span>. By using this threshold, we reduce the number of false positive down to a worst-case scenario of 0.1% of the voxels. For an image of 100,000 voxels, this would mean 1,000 false positives, for an image of 50,000 voxels this would mean 500 false positives and so on. Although this is still not great, it is nowhere near as bad as using the traditional 5% threshold. The advantage is that this will still retain good sensitivity, because we know we should also be seeing the majority of true effects as well. This is exemplified in <a class="reference internal" href="#poldrack-uncorr-thresh-again-fig"><span class="std std-numref">Fig. 11</span></a>, repeated from the previous section. Although there are lots of results outside the yellow circle, importantly we have identified the majority of true positives inside the circle as well.</p>
 <figure class="align-default" id="poldrack-uncorr-thresh-again-fig">
 <a class="reference internal image-reference" href="_images/poldrack-uncorr-thresh.png"><img alt="_images/poldrack-uncorr-thresh.png" src="_images/poldrack-uncorr-thresh.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 11 </span><span class="caption-text">Visualisation of thresholding an image that contains true activations (within the circle) and noise (outside the circle) using <span class="math notranslate nohighlight">\(p &lt; 0.10\)</span>. Notice that, despite the false-positives, the sensitivity for detecting effects <em>within</em> the circle is very high.</span><a class="headerlink" href="#poldrack-uncorr-thresh-again-fig" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 11 </span><span class="caption-text">Visualisation of thresholding an image that contains true activations (within the circle) and noise (outside the circle) using <span class="math notranslate nohighlight">\(p &lt; 0.10\)</span>. Notice that, despite the false-positives, the sensitivity for detecting effects <em>within</em> the circle is very high.</span><a class="headerlink" href="#poldrack-uncorr-thresh-again-fig" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="solution-2-control-the-family-wise-error-fwe">
-<h2>Solution 2: Control the Family-wise Error (FWE)<a class="headerlink" href="#solution-2-control-the-family-wise-error-fwe" title="Link to this heading">#</a></h2>
+<h2>Solution 2: Control the Family-wise Error (FWE)<a class="headerlink" href="#solution-2-control-the-family-wise-error-fwe" title="Permalink to this heading">#</a></h2>
 <p>An alternative to a stricter threshold is to try and control the FWER directly. By doing so, we can limit the possibility of any false positives. If we control the FWER at 5% it means that there is only a 5% chance of any false positives in the image. This means that, after correction, we can be 95% confident that there are no false positives at all in our image. If we were to repeat our experiment multiple times, and correct our images each time with a FWER procedure, we would only expect 5% of those repeats to contain <em>any</em> false positives. So, most of the time we can be pretty confident that any results that survive a FWE-correction procedure are <em>true positives</em>. This is illustrated in <a class="reference internal" href="#poldrack-fwe-thresh-fig"><span class="std std-numref">Fig. 12</span></a> from <a class="reference external" href="https://www-cambridge-org.manchester.idm.oclc.org/core/books/handbook-of-functional-mri-data-analysis/8EDF966C65811FCCC306F7C916228529#">Poldrack, Mumford and Nichols (2011)</a>, where controlling the FWER at 10% leads to only 1/10 repeats showing any false positives (the second-to-last example, if you are having trouble seeing it). However, we should also note what this had done to our ability to see the true positives within the yellow circle.</p>
 <figure class="align-default" id="poldrack-fwe-thresh-fig">
 <a class="reference internal image-reference" href="_images/poldrack-fwe-thresh.png"><img alt="_images/poldrack-fwe-thresh.png" src="_images/poldrack-fwe-thresh.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 12 </span><span class="caption-text">Visualisation of thresholding an image that contains true activations (within the circle) and noise (outside the circle) using a FWE-corrected <span class="math notranslate nohighlight">\(p &lt; 0.10\)</span>. Notice that only 10% of the repeats contain <em>any</em> false-positives.</span><a class="headerlink" href="#poldrack-fwe-thresh-fig" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 12 </span><span class="caption-text">Visualisation of thresholding an image that contains true activations (within the circle) and noise (outside the circle) using a FWE-corrected <span class="math notranslate nohighlight">\(p &lt; 0.10\)</span>. Notice that only 10% of the repeats contain <em>any</em> false-positives.</span><a class="headerlink" href="#poldrack-fwe-thresh-fig" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition tip">
@@ -436,7 +435,7 @@ document.write(`
 <p>When writing up your analyses using Microsoft Word, be aware of the fact that FWE will often get auto-corrected to “FEW”. Please keep an eye on this as we get many submissions every year that talk about “FEW correction in SPM”.</p>
 </div>
 <section id="bonferroni-correction">
-<h3>Bonferroni Correction<a class="headerlink" href="#bonferroni-correction" title="Link to this heading">#</a></h3>
+<h3>Bonferroni Correction<a class="headerlink" href="#bonferroni-correction" title="Permalink to this heading">#</a></h3>
 <p>One of the simplest ways of applying an FWE-correction is to use a Bonferroni procedure. Here, we simply create a new threshold by dividing the old threshold by the number of comparisons. So, for our image of 100,000 voxels, we have</p>
 <div class="math notranslate nohighlight">
 \[
@@ -445,7 +444,7 @@ document.write(`
 <p>Now, we only count voxels where <span class="math notranslate nohighlight">\(p &lt; 0.0000005\)</span> as significant. Hopefully it is clear just from this example how <em>strict</em> this approach is. It will indeed control the FWER, however, the Bonferroni correction is designed for cases where our tests are independent of one another. This means the value of one test is not connected in any way to the value of another. In fMRI, however, our tests have a degree of correlation because tests in neighbouring voxels are likely to be very similar. This is where the concept of multiple comparisons becomes a bit hazy. If two tests are perfectly correlated, does it still count as two comparisons or one? If those two tests are correlated, but not perfectly, how many tests does that count as? All of this is to say that if our tests are correlated then there should be some way of having a less severe correction, because the number of tests is not equivalent to the number of voxels.</p>
 </section>
 <section id="random-field-theory-correction">
-<h3>Random Field Theory Correction<a class="headerlink" href="#random-field-theory-correction" title="Link to this heading">#</a></h3>
+<h3>Random Field Theory Correction<a class="headerlink" href="#random-field-theory-correction" title="Permalink to this heading">#</a></h3>
 <p>A solution to this issue, that allows us to take the degree of correlation in an image into account, is given by the application of something called <em>random field theory</em>. This was the crowning achievement of the SPM developers and is one of the most significant additions to the world of neuroimaging. However, there is no getting around the fact that it is <em>complicated</em>. In fact, you could go as far to say that many of the people who work with fMRI data do not really understand how this works. By-and-large, they just assume that it does work.</p>
 <p>It is useful to have some sense of RFT correction, which is explained more fully in the advanced drop-down below. The simple explanation is that this method is able to quantify the degree of correlation in an image by calculating its <em>smoothness</em>. This can then be used to redefine the image in terms of <em>resolution-elements</em> (known as RESELS), which quantify the resolution of the image in terms of independent units. These RESELs are then used to determine the threshold needed to achieve FWER = 5%, using something known as the <em>Euler Characteristic</em> (EC), which quantifies the expected number of clusters under the null hypothesis.  Practically speaking, however, you do not need to know how this works to use <code class="docutils literal notranslate"><span class="pre">SPM</span></code>. If you are interested, read the drop-down below and consult the paper by <a class="reference external" href="https://pubmed.ncbi.nlm.nih.gov/14599004/">Nichols &amp; Hayasaka (2003)</a>.</p>
 <div class="dropdown admonition">
@@ -460,14 +459,14 @@ document.write(`
 <figure class="align-default" id="smoothed-grf-fig">
 <a class="reference internal image-reference" href="_images/smoothed-grf.png"><img alt="_images/smoothed-grf.png" src="_images/smoothed-grf.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 13 </span><span class="caption-text">Illustration of an un-smoothed (<em>left</em>) and smoothed (<em>right</em>) Gaussian random field (GRF).</span><a class="headerlink" href="#smoothed-grf-fig" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 13 </span><span class="caption-text">Illustration of an un-smoothed (<em>left</em>) and smoothed (<em>right</em>) Gaussian random field (GRF).</span><a class="headerlink" href="#smoothed-grf-fig" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Now we have something that can represent our imaging data under the null hypothesis. This is known as a <em>Gaussian random field</em> (GRF). If we then imagine specifying different thresholds to show or hide the voxels in this image, we might see something akin to <a class="reference internal" href="#thresh-grf-fig"><span class="std std-numref">Fig. 14</span></a>.</p>
 <figure class="align-default" id="thresh-grf-fig">
 <a class="reference internal image-reference" href="_images/thresh-grf.png"><img alt="_images/thresh-grf.png" src="_images/thresh-grf.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 14 </span><span class="caption-text">Illustration of applying various thresholds to a GRF.</span><a class="headerlink" href="#thresh-grf-fig" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 14 </span><span class="caption-text">Illustration of applying various thresholds to a GRF.</span><a class="headerlink" href="#thresh-grf-fig" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>If we assume our random field represents our image data under the null hypothesis, then the number of blobs that remain after thresholding tell us how many results we expect under the null, for a given threshold. So this seems useful, because it means we can have some idea about how many results we would expect in our image by chance when using a particular threshold.</p>
@@ -486,27 +485,27 @@ R = \frac{V}{\text{FWHM}_{x} \times \text{FWHM}_{y} \times \text{FWHM}_{z}} = \f
 <figure class="align-default" id="ec-plot-fig">
 <a class="reference internal image-reference" href="_images/ec-plot.png"><img alt="_images/ec-plot.png" src="_images/ec-plot.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 15 </span><span class="caption-text">Illustration of the EC against different threshold values.</span><a class="headerlink" href="#ec-plot-fig" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 15 </span><span class="caption-text">Illustration of the EC against different threshold values.</span><a class="headerlink" href="#ec-plot-fig" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The point where EC = 1 is in the tail of the graph, a shown in <a class="reference internal" href="#ec-is-1-fig"><span class="std std-numref">Fig. 16</span></a>. So in this example, if we used a threshold of z = 3.15 we would expect an average of at least one false-positive results in our image. So a threshold of z = 3.15 is equivalent to a FWER of 100%. In order to get to a FWER of 5% we simply keep increasing the threshold until we get EC = 0.05. Based on the graph in <a class="reference internal" href="#ec-is-1-fig"><span class="std std-numref">Fig. 16</span></a>, this would be <span class="math notranslate nohighlight">\(z \approx 4\)</span>. So if we threshold our image using this threshold, then we should only see one or more false positives 5% of the time. This threshold therefore controls the FWER at 5%.</p>
 <figure class="align-default" id="ec-is-1-fig">
 <a class="reference internal image-reference" href="_images/ec-is-1.png"><img alt="_images/ec-is-1.png" src="_images/ec-is-1.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 16 </span><span class="caption-text">Illustration of how the tail of the EC plot can be used to determine the threshold needed for FWER = 0.05.</span><a class="headerlink" href="#ec-is-1-fig" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 16 </span><span class="caption-text">Illustration of how the tail of the EC plot can be used to determine the threshold needed for FWER = 0.05.</span><a class="headerlink" href="#ec-is-1-fig" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </div>
 </section>
 </section>
 <section id="solution-3-control-the-false-discovery-rate-fdr">
-<h2>Solution 3: Control the False Discovery Rate (FDR)<a class="headerlink" href="#solution-3-control-the-false-discovery-rate-fdr" title="Link to this heading">#</a></h2>
+<h2>Solution 3: Control the False Discovery Rate (FDR)<a class="headerlink" href="#solution-3-control-the-false-discovery-rate-fdr" title="Permalink to this heading">#</a></h2>
 <p>Although the FWE-correction using random field theory was a big breakthrough in allowing fMRI researchers to get around the problem of multiple testing, in reality many researchers found the approach far too strict. This is largely because controlling the family-wise error is inherently a strict thing to do, even after your take the correlation among voxels into account. This means that many fMRI experiments would simply show no results after FWE-correction. Although this does achieve the aim of having no false positives in our results, this is at the expense of false negatives. We saw this earlier in the illustration of FWE correction, where many of the true results inside the yellow circle were missing after FWE correction.</p>
 <p>As an alternative to FWE-correction, we can instead elect to not control the FWER at all. Instead, we choose to control a different quantity known as the false discovery rate (FDR). The FDR is simply the proportion of significant results that are actually false positives. An FDR procedure corrects <span class="math notranslate nohighlight">\(p\)</span>-values in such a way that, on average, the number of those <span class="math notranslate nohighlight">\(p\)</span>-values that are false positives will not exceed a given threshold. For instance, a procedure that controls the FDR at 5% will mean that on average no more than 5% of our results will be false positives. Unfortunately, we do not know which results are which, and so we have to accept the idea that FDR will make sure only a small number of them will be false. This is illustrated in <a class="reference internal" href="#poldrack-fdr-thresh-fig"><span class="std std-numref">Fig. 17</span></a>, where an FDR procedure of 10% guarantees that (on average) only 10% of the significant voxels will be false positives. In this example we can see the false positives outside the yellow circle, but of course in realisty we will have no idea which results are which.</p>
 <figure class="align-default" id="poldrack-fdr-thresh-fig">
 <a class="reference internal image-reference" href="_images/poldrack-fdr-thresh.png"><img alt="_images/poldrack-fdr-thresh.png" src="_images/poldrack-fdr-thresh.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 17 </span><span class="caption-text">Visualisation of thresholding an image that contains true activations (within the circle) and noise (outside the circle) using a FDR-corrected <span class="math notranslate nohighlight">\(p &lt; 0.10\)</span>. On average, only 10% of the results outside of the circle are shown as significant.</span><a class="headerlink" href="#poldrack-fdr-thresh-fig" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 17 </span><span class="caption-text">Visualisation of thresholding an image that contains true activations (within the circle) and noise (outside the circle) using a FDR-corrected <span class="math notranslate nohighlight">\(p &lt; 0.10\)</span>. On average, only 10% of the results outside of the circle are shown as significant.</span><a class="headerlink" href="#poldrack-fdr-thresh-fig" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Notice that, compared to FWE-correction, we have retained many more of our true positives. This comes at the expense of more false positives. In fact, we have false positives every single time. So FDR does not guarantee no false positives, it just guarantees control over the average proportion of our results that will be false. If we keep that small, then we can assume that the majority of our findings are real results (we just do not know which ones!). This puts FDR correction somewhere in-between a stricter uncorrected threshold and an FWE-corrected threshold in terms of its balance between sensitivity for true positives and risk of false positives.</p>
@@ -520,22 +519,22 @@ R = \frac{V}{\text{FWHM}_{x} \times \text{FWHM}_{y} \times \text{FWHM}_{z}} = \f
 </div>
 </section>
 <section id="choosing-a-threshold">
-<h2>Choosing a Threshold<a class="headerlink" href="#choosing-a-threshold" title="Link to this heading">#</a></h2>
+<h2>Choosing a Threshold<a class="headerlink" href="#choosing-a-threshold" title="Permalink to this heading">#</a></h2>
 <p>The three approaches described in this section all differ in terms of their balance of false positives and false negatives. The viewers below illustrate the application of these techniques to the results of a single subject looking at pictures of food compared to non-food. In general, if we were to order the correction techniques from most liberal to least liberal, we would say uncorrected &gt; voxel-wise FDR &gt; topological FDR &gt; FWE. However, in this instance, the voxel-wise FDR is the most liberal in terms of the number of voxels that have survived..</p>
 <section id="uncorrected-p-0-001">
-<h3>Uncorrected <em>p</em> &lt; 0.001<a class="headerlink" href="#uncorrected-p-0-001" title="Link to this heading">#</a></h3>
+<h3>Uncorrected <em>p</em> &lt; 0.001<a class="headerlink" href="#uncorrected-p-0-001" title="Permalink to this heading">#</a></h3>
 <iframe src="p-uncorr-001.html" width="800" height="600" frameborder="0" scrolling="no" title=""></iframe>
 </section>
 <section id="fdr-corrected-p-0-05">
-<h3>FDR-corrected <em>p</em> &lt; 0.05<a class="headerlink" href="#fdr-corrected-p-0-05" title="Link to this heading">#</a></h3>
+<h3>FDR-corrected <em>p</em> &lt; 0.05<a class="headerlink" href="#fdr-corrected-p-0-05" title="Permalink to this heading">#</a></h3>
 <iframe src="p-fdr-05.html" width="800" height="600" frameborder="0" scrolling="no" title=""></iframe>
 </section>
 <section id="topological-fdr-corrected-p-0-05">
-<h3>Topological FDR-corrected <em>p</em> &lt; 0.05<a class="headerlink" href="#topological-fdr-corrected-p-0-05" title="Link to this heading">#</a></h3>
+<h3>Topological FDR-corrected <em>p</em> &lt; 0.05<a class="headerlink" href="#topological-fdr-corrected-p-0-05" title="Permalink to this heading">#</a></h3>
 <iframe src="p-fdr-topo-05.html" width="800" height="600" frameborder="0" scrolling="no" title=""></iframe>
 </section>
 <section id="fwe-corrected-p-0-05">
-<h3>FWE-corrected <em>p</em> &lt; 0.05<a class="headerlink" href="#fwe-corrected-p-0-05" title="Link to this heading">#</a></h3>
+<h3>FWE-corrected <em>p</em> &lt; 0.05<a class="headerlink" href="#fwe-corrected-p-0-05" title="Permalink to this heading">#</a></h3>
 <iframe src="p-fwe-05.html" width="800" height="600" frameborder="0" scrolling="no" title=""></iframe>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
