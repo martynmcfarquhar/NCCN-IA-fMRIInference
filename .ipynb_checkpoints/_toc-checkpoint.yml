@@ -10,4 +10,5 @@ chapters:
 - file: 4.multiple-testing
 - file: 5.solutions-multiple-testing
 - file: 6.levels-inference
-- file: 7.summary-quiz
+- file: 7.inference-spm
+- file: 8.summary-quiz
