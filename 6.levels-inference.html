@@ -385,7 +385,11 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#features-of-an-image">Features of an Image</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#voxel-level-inference">Voxel-level Inference</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cluster-level-inference">Cluster-level Inference</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cluster-level-inference">Cluster-level Inference</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-of-cluster-level-results">Example of Cluster-level Results</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#choosing-a-level-of-inference">Choosing a level of inference</a></li>
 </ul>
             </nav>
         </div>
@@ -421,10 +425,7 @@ document.write(`
 <section id="voxel-level-inference">
 <h2>Voxel-level Inference<a class="headerlink" href="#voxel-level-inference" title="Permalink to this heading">#</a></h2>
 <p>The approach we have taken so far, in terms of calculating a test statistic and <span class="math notranslate nohighlight">\(p\)</span>-value at each voxel, is known as <em>voxel-level</em> inference. As illustrated in <a class="reference internal" href="#vox-level-fig"><span class="std std-numref">Fig. 20</span></a>, this involves specifying a threshold <span class="math notranslate nohighlight">\(u\)</span> and then declaring any voxel above that threshold as significant. As discussed in the last section, this threshold can be derived from uncorrected <span class="math notranslate nohighlight">\(p\)</span>-values, FWE-corrected <span class="math notranslate nohighlight">\(p\)</span>-values or FDR-corrected <span class="math notranslate nohighlight">\(p\)</span>-values.</p>
-<div class="admonition-why-choose-voxel-level-inference admonition">
-<p class="admonition-title">Why Choose Voxel-level Inference?</p>
 <p>The advantage of voxel-level inference is that it is the most spatially-specific approach. This is because we can point to any voxel with a significant <span class="math notranslate nohighlight">\(p\)</span>-value and say “there was a significant effect here”. This means we can <em>localise</em> effects with great accuracy. However, the disadvantage is that voxel-level inference is the more <em>conservative</em> approach. In addition, we have to think about how useful or realistic it is to find a single result at a single voxel? Surely we expect some degree of spatial extent to the signal, given that a real brain is not neatly compartmentalised into discrete voxel units. Voxel-level inference does not take this into account. As such, it is not uncommon for only a single voxel to survive correction. When this happens, we have to consider the biological plausibility of a significant change in signal only occurring within a very specific <span class="math notranslate nohighlight">\(3mm^{3}\)</span> region of the brain.</p>
-</div>
 <figure class="align-default" id="vox-level-fig">
 <a class="reference internal image-reference" href="_images/vox-level.png"><img alt="_images/vox-level.png" src="_images/vox-level.png" style="width: 800px;" /></a>
 <figcaption>
@@ -435,14 +436,35 @@ document.write(`
 <p class="admonition-title">Note</p>
 <p>Voxel-level inference in <code class="docutils literal notranslate"><span class="pre">SPM</span></code> is labeled as <em>peak-level</em>. The distinction between a voxel and a peak is really about the fact that a peak is a topological feature of the data, whereas a voxel is not. If this is confusing, do not worry about it. Just know that there is a distinction between voxels and peaks and that the terms are not necessarily interchangeable. If you are interested, <a class="reference external" href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3221040/">Chumbley <em>et al.</em> (2010)</a> discuss this in more detail.</p>
 </div>
+<p>You can see an example of voxel-level-thresholded results below</p>
+<iframe src="peak-level.html" width="800" height="600" frameborder="0" scrolling="no" title=""></iframe>
 </section>
 <section id="cluster-level-inference">
 <h2>Cluster-level Inference<a class="headerlink" href="#cluster-level-inference" title="Permalink to this heading">#</a></h2>
-<p>An alternative to focusing on individual voxels is to instead focus on the <em>spatial extent</em> of the signal. In order to do this, we need to first isolate the signal of interest by thresholding the image. By specifying an intial threshold (<span class="math notranslate nohighlight">\(u_c\)</span>) we create <em>clusters</em> of voxels, defined as all the voxels touching each other after thresholding. Once we have done this, we can then assess the extent of the activation by counting the number of voxels within a cluster, as illustrated below.</p>
+<p>An alternative to focusing on individual voxels is to instead focus on the <em>spatial extent</em> of the signal. In order to do this, we need to first isolate the signal of interest by thresholding the image. By specifying an intial threshold (<span class="math notranslate nohighlight">\(u_c\)</span>) we create <em>clusters</em> of voxels, defined as all the voxels touching each other after thresholding. Once we have done this, we can then assess the extent of the activation by counting the number of voxels within a cluster, as illustrated in <a class="reference internal" href="#clust-level-fig"><span class="std std-numref">Fig. 21</span></a>.</p>
+<figure class="align-default" id="clust-level-fig">
+<a class="reference internal image-reference" href="_images/clust-level.png"><img alt="_images/clust-level.png" src="_images/clust-level.png" style="width: 800px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 21 </span><span class="caption-text">Illustration of cluster-level inference.</span><a class="headerlink" href="#clust-level-fig" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>How do we use this information for inference? In brief, the machinery of random-field theory can be tuned to give us information on the size of clusters we would expect under the null hypothesis. Because of this, we can calculate <span class="math notranslate nohighlight">\(p\)</span>-values for the <em>size</em> of a cluster, allowing us to ask what the probability is of a cluster <em>this large or larger</em>, if the null hypothesis were true. This gives an uncorrected <span class="math notranslate nohighlight">\(p\)</span>-value, which can be subsequently corrected using the expected number of clusters to produce a <span class="math notranslate nohighlight">\(p_{\text{FWE}}\)</span> value, or using an FDR procedure to produce a <span class="math notranslate nohighlight">\(q_{\text{FDR}}\)</span> value. So, much like voxel-level inference, we can calculate <span class="math notranslate nohighlight">\(p\)</span>-values for clusters and then correct them across the brain.</p>
+<p>Based on this description, it should be clear that cluster-level inference is a <em>two-step</em> procedure. First, we specify an initial threshold to create the clusters, then we perform inference using corrected <span class="math notranslate nohighlight">\(p\)</span>-values on the resultant clusters. This initial threshold is commonly known as the <em>cluster-forming threshold</em>, and is typically specified as an uncorrected <span class="math notranslate nohighlight">\(p &lt; 0.001\)</span>. This threshold is essentially <em>arbitrary</em> and is there simply to create clusters. This threshold will determine the size of clusters you get, as the more liberal it is the bigger the clusters will become. In principle, this should not matter because the FWE correction takes account of this by knowing the size of cluster we would expect under the null at that threshold. However, if you make the threshold too liberal, you may find that individual clusters merge into single large clusters that are difficult to interpret. Also, evidence from Eklund, Nichols &amp; Knutsson (2016) suggests that with a threshold more liberal than <span class="math notranslate nohighlight">\(p &lt; 0.001\)</span>, the assumptions of random field theory break-down and the FWE procedure becomes shockingly liberal. All this is to say that you should probably just stick to <span class="math notranslate nohighlight">\(p &lt; 0.001\)</span> as the cluster-forming threshold.</p>
+<p>An addition issue with the cluster-level is that, although more sensitive than voxel-level inference, this sensitivity comes at the cost of our ability to spatially localise effects. Whereas with voxel-level inference we can identify individual voxels as significant, we cannot do that with clusters because a significant cluster is based purely on the <em>size</em> and not the signal within the cluster. All you can really conclude is that one or more voxels in the cluster has evidence against the null. Although tempting to look at the peak statistic within a cluster, this will not always be helpful. If the cluster is very large then the peak may not be very representative of the whole cluster. For instance, there may be a variety of effects within a cluster that lead to <span class="math notranslate nohighlight">\(p &lt; 0.001\)</span>. We therefore cannot always assume that the effect at the peak will be the same everywhere in the cluster. In addition, just focusing on the peak will not necessarily help with localising effects if the cluster covers half the brain (for instance). So we lose our ability to localise results very accurately, but do gain more sensitivity.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Clusters are based on voxels touching each other after thresholding. Note that different software uses different definition of “touching”. For instance, we could count touching as including only the <em>faces</em> and <em>edges</em> of voxels, or we could also include voxels where the <em>corners</em> touch. <code class="docutils literal notranslate"><span class="pre">SPM</span></code> uses an 18-connectivity scheme, which includes all faces (6) and all edges (12), but does not includer corners.</p>
+<p>Clusters are based on voxels touching each other after thresholding. Note that different software uses different definition of “touching”. For instance, we could count touching as including only the <em>faces</em> and <em>edges</em> of voxels, or we could also include voxels where the <em>corners</em> touch. <code class="docutils literal notranslate"><span class="pre">SPM</span></code> uses an 18-connectivity scheme, which includes all faces (6) and all edges (12), but does not include corners.</p>
 </div>
+<section id="example-of-cluster-level-results">
+<h3>Example of Cluster-level Results<a class="headerlink" href="#example-of-cluster-level-results" title="Permalink to this heading">#</a></h3>
+<p>You can see an example of cluster-level-thresholded results below</p>
+<iframe src="cluster-level.html" width="800" height="600" frameborder="0" scrolling="no" title=""></iframe>
+</section>
+</section>
+<section id="choosing-a-level-of-inference">
+<h2>Choosing a level of inference<a class="headerlink" href="#choosing-a-level-of-inference" title="Permalink to this heading">#</a></h2>
+<p>Choosing between voxel-level and cluster-level is a balance between sensitivity and localising power. Voxel-level is less sensitive, but better at localisation, whereas cluster-level is more sensitive, but worse at localisation. Cluster-level also requires the arbitrary cluster-forming threshold, which can be cause for criticism given that there is no objective way to determine what this should be.</p>
+<p>We can illustrate the difference in these approaches with the results below. While the cluster-level</p>
 </section>
 </section>
 
@@ -512,7 +534,11 @@ document.write(`
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#features-of-an-image">Features of an Image</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#voxel-level-inference">Voxel-level Inference</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cluster-level-inference">Cluster-level Inference</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cluster-level-inference">Cluster-level Inference</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-of-cluster-level-results">Example of Cluster-level Results</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#choosing-a-level-of-inference">Choosing a level of inference</a></li>
 </ul>
   </nav></div>
 
