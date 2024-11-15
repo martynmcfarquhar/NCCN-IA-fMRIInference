@@ -424,6 +424,10 @@ document.write(`
 <p class="admonition-title">Why Choose Voxel-level Inference?</p>
 <p>The advantage of voxel-level inference is that it is the most spatially-specific approach. This is because we can point to any voxel with a significant <span class="math notranslate nohighlight">\(p\)</span>-value and say “there was a significant effect here”. This means we can <em>localise</em> effects with great accuracy. However, the disadvantage is that voxel-level inference is the more <em>conservative</em> approach. In addition, we have to think about how useful or realistic it is to find a single result at a single voxel? Surely we expect some degree of spatial extent to the signal, given that a real brain is not neatly compartmentalised into discrete voxel units. Voxel-level inference does not take this into account. As such, it is not uncommon for only a single voxel to survive correction. When this happens, we have to consider the biological plausibility of a significant change in signal only occurring within a very specific <span class="math notranslate nohighlight">\(3mm^{3}\)</span> region of the brain.</p>
 </div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Voxel-level inference in <code class="docutils literal notranslate"><span class="pre">SPM</span></code> is labeled as <em>peak-level</em>. The distinction between a voxel and a peak is really about the fact that a peak is a topological feature of the data, whereas a voxel is not. If this is confusing, do not worry about it. Just know that there is a distinction between voxels and peaks and that the terms are not necessarily interchangeable. If you are interested, <a class="reference external" href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3221040/">Chumbley <em>et al.</em> (2010)</a> discuss this in more detail.</p>
+</div>
 </section>
 </section>
 
