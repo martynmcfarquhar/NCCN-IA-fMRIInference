@@ -1,12 +1,13 @@
 
+
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="./" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Contrasts &#8212; fMRI Single-subject Statistical Modelling</title>
   
@@ -28,35 +29,33 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.4cbf315f70debaebd550c87a6162cf0f.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="_static/doctools.js?v=9a2dae69"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="_static/copybutton.js?v=f281be69"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script src="_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '2.contrasts';</script>
@@ -185,6 +184,9 @@
 <li class="toctree-l1"><a class="reference internal" href="1.images-to-inference.html">From Images to Inference</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Contrasts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="3.thresholding-maps.html">Thresholding Statistical Maps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4.multiple-testing.html">The Multiple Testing Problem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="5.solutions-multiple-testing.html">Solutions to the Multiple Testing Problem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6.levels-inference.html">Levels of Inference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="7.summary-quiz.html">Summary and Quiz</a></li>
 </ul>
 
@@ -396,10 +398,10 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="contrasts">
-<h1>Contrasts<a class="headerlink" href="#contrasts" title="Link to this heading">#</a></h1>
+<h1>Contrasts<a class="headerlink" href="#contrasts" title="Permalink to this heading">#</a></h1>
 <p>Our first step towards trying to reach some conclusions about our data is to take the parameter estimate images and turn them into images of <em>statistics</em>. These images of statistics are known as <em>statistical parametric maps</em> (SPMs). In this section, we are going to explore how to create these statistical maps, before turning to what we actually do with them in a later section.</p>
 <section id="forming-a-statistical-parametric-map">
-<h2>Forming a Statistical Parametric Map<a class="headerlink" href="#forming-a-statistical-parametric-map" title="Link to this heading">#</a></h2>
+<h2>Forming a Statistical Parametric Map<a class="headerlink" href="#forming-a-statistical-parametric-map" title="Permalink to this heading">#</a></h2>
 <p>As we know from the world of mathematical statistics, we can use a parameter estimate and its standard error to form a test statistic by dividing one by the other, like so</p>
 <div class="math notranslate nohighlight">
 \[
@@ -411,7 +413,7 @@ t = \frac{\hat{\beta}_{k}}{\sigma\{\beta_{k}\}}
 <figure class="align-default" id="creating-t-fig">
 <a class="reference internal image-reference" href="_images/creating-t.png"><img alt="_images/creating-t.png" src="_images/creating-t.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 3 </span><span class="caption-text">Illustration of how an SPM{t} image can be created by dividing each voxel in the parameter estimate image by each voxel in the standard error image.</span><a class="headerlink" href="#creating-t-fig" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 3 </span><span class="caption-text">Illustration of how an SPM{t} image can be created by dividing each voxel in the parameter estimate image by each voxel in the standard error image.</span><a class="headerlink" href="#creating-t-fig" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Notice already that this gives us some insight into why we want to create an image of statistics. If we just looked at the parameter estimates image we might see a larger effect in the brain stem. However, looking at the standard error image, this region has a large degree of uncertainty around the accuracy of this estimate. As such, once this uncertainty is taken into account, the effect in the brain stem disappears. This nicely highlights why we should take the degree of uncertainty into account before trying to interpret the values of the parameter estimates.</p>
@@ -419,13 +421,13 @@ t = \frac{\hat{\beta}_{k}}{\sigma\{\beta_{k}\}}
 <figure class="align-default" id="t-p-thresh-fig">
 <a class="reference internal image-reference" href="_images/t-p-thresh.png"><img alt="_images/t-p-thresh.png" src="_images/t-p-thresh.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 4 </span><span class="caption-text">Example of applying traditional significance-testing criteria to an image of <span class="math notranslate nohighlight">\(t\)</span>-statistics.</span><a class="headerlink" href="#t-p-thresh-fig" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 4 </span><span class="caption-text">Example of applying traditional significance-testing criteria to an image of <span class="math notranslate nohighlight">\(t\)</span>-statistics.</span><a class="headerlink" href="#t-p-thresh-fig" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Unfortunately, there is a big problem with calculating <span class="math notranslate nohighlight">\(p\)</span>-values in this fashion, but we will get to that later in this lesson. For now, let us focus on the process of creating a statistical map. One issue with what we have done so far is that our approach to calculating <span class="math notranslate nohighlight">\(t\)</span> is limited to only testing a single parameter at a time. Typically, in fMRI, our parameter estimates will represent signal change in relation to different experimental conditions. Because of this, the <em>differences</em> between the experimental conditions are often of interest. We might also want to look at the averages of several conditions, or perhaps look at differences of averages. As such, in order to make our hypothesis testing framework more flexible, we have to turn to the use of <em>contrasts</em>.</p>
 </section>
 <section id="contrasts-theory">
-<h2>Contrasts Theory<a class="headerlink" href="#contrasts-theory" title="Link to this heading">#</a></h2>
+<h2>Contrasts Theory<a class="headerlink" href="#contrasts-theory" title="Permalink to this heading">#</a></h2>
 <p>A contrast is simply a linear combination of parameter estimates. In the framework of the GLM, we can define a contrast as</p>
 <div class="math notranslate nohighlight">
 \[
@@ -488,19 +490,19 @@ t = \frac{\mathbf{L}\hat{\boldsymbol{\beta}}}{\sigma\sqrt{\mathbf{L}(\mathbf{X}^
 </div>
 </section>
 <section id="forming-a-statistical-map-using-contrasts">
-<h2>Forming a Statistical Map Using Contrasts<a class="headerlink" href="#forming-a-statistical-map-using-contrasts" title="Link to this heading">#</a></h2>
+<h2>Forming a Statistical Map Using Contrasts<a class="headerlink" href="#forming-a-statistical-map-using-contrasts" title="Permalink to this heading">#</a></h2>
 <p>Application of the contrasts framework to images is a straightforward extension of what we have already seen. We start by forming the numerator of <span class="math notranslate nohighlight">\(t\)</span> by using the contrast weights at each voxel to create a linear combination of parameter estimates. The resulting image is an image of contrast values, which is saved in a file called <code class="docutils literal notranslate"><span class="pre">con_*.nii</span></code> by <code class="docutils literal notranslate"><span class="pre">SPM</span></code>. These are numbered as you can specify as many contrasts as you like (e.g. <code class="docutils literal notranslate"><span class="pre">con_0001.nii</span></code>, <code class="docutils literal notranslate"><span class="pre">con_0002.nii</span></code>, <code class="docutils literal notranslate"><span class="pre">con_0003.nii</span></code> etc.). The process of creating an image of contrast values is illustrated in <a class="reference internal" href="#con-vals-images-fig"><span class="std std-numref">Fig. 5</span></a>.</p>
 <figure class="align-default" id="con-vals-images-fig">
 <a class="reference internal image-reference" href="_images/con-vals-images.png"><img alt="_images/con-vals-images.png" src="_images/con-vals-images.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 5 </span><span class="caption-text">Illustration of creating a contrast map using images.</span><a class="headerlink" href="#con-vals-images-fig" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 5 </span><span class="caption-text">Illustration of creating a contrast map using images.</span><a class="headerlink" href="#con-vals-images-fig" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Once we have the image of contrast values, all we need is an image of standard errors for the contrast. We then divide the two, voxel-by-voxel, to form our statistical parametric map. This is shown in <a class="reference internal" href="#t-from-imagess-fig"><span class="std std-numref">Fig. 6</span></a>.</p>
 <figure class="align-default" id="t-from-imagess-fig">
 <a class="reference internal image-reference" href="_images/t-from-images.png"><img alt="_images/t-from-images.png" src="_images/t-from-images.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 6 </span><span class="caption-text">Illustration of creating an SPM{t} map from an image of contrast values and an image of standard errors.</span><a class="headerlink" href="#t-from-imagess-fig" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 6 </span><span class="caption-text">Illustration of creating an SPM{t} map from an image of contrast values and an image of standard errors.</span><a class="headerlink" href="#t-from-imagess-fig" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>This is exactly the same procedure we saw earlier with a single parameter estimate. Hopefully it is clear how the contrast framework allows us to construct <span class="math notranslate nohighlight">\(t\)</span>-statistic images that are based on more flexible hypotheses about our parameter estimates. This should allow us to ask a wider range of questions about the values of our parameter estimates, giving us scope to perform inference that goes beyond just considering each parameter estimate separately. The weights in <span class="math notranslate nohighlight">\(\mathbf{L}\)</span> are ultimately what we give <code class="docutils literal notranslate"><span class="pre">SPM</span></code> to tell it what question to ask. As such, you will get more comfortable about thinking about hypotheses in this way as you get more experience using <code class="docutils literal notranslate"><span class="pre">SPM</span></code>.</p>

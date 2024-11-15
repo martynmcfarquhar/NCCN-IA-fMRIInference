@@ -1,12 +1,13 @@
 
+
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="./" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Thresholding Statistical Maps &#8212; fMRI Single-subject Statistical Modelling</title>
   
@@ -28,35 +29,33 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.4cbf315f70debaebd550c87a6162cf0f.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="_static/doctools.js?v=9a2dae69"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="_static/copybutton.js?v=f281be69"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script src="_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '3.thresholding-maps';</script>
@@ -187,6 +186,7 @@
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Thresholding Statistical Maps</a></li>
 <li class="toctree-l1"><a class="reference internal" href="4.multiple-testing.html">The Multiple Testing Problem</a></li>
 <li class="toctree-l1"><a class="reference internal" href="5.solutions-multiple-testing.html">Solutions to the Multiple Testing Problem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6.levels-inference.html">Levels of Inference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="7.summary-quiz.html">Summary and Quiz</a></li>
 </ul>
 
@@ -386,13 +386,13 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="thresholding-statistical-maps">
-<h1>Thresholding Statistical Maps<a class="headerlink" href="#thresholding-statistical-maps" title="Link to this heading">#</a></h1>
+<h1>Thresholding Statistical Maps<a class="headerlink" href="#thresholding-statistical-maps" title="Permalink to this heading">#</a></h1>
 <p>As we have seen previously, once we have our image of test statistics, the classical approach would be to refer to the null distribution of the <span class="math notranslate nohighlight">\(t\)</span>-statistic and then calculate <span class="math notranslate nohighlight">\(p\)</span>-values. At the beginning of the last section, we saw how we could also do this with our images of <span class="math notranslate nohighlight">\(t\)</span>-statistics, identifying which voxels were significant using the tradition <span class="math notranslate nohighlight">\(p &lt; 0.05\)</span> criterion. We can then use this information to <em>threshold</em> our statistical map, which will be the focus of this section.</p>
 <p>When we talk about <em>thresholding</em> an image, we essentially mean making some voxels invisible using a cut-off value. This serves the purpose of only letting us only see the values that we care about in an image. Because this turns the image into a set of regional results, it can be difficult to make sense of a purely thresholded image. As such, we normally display the thresholded image on top of another image that we can use for localisation purposes. If the data is normalised, we can use an MNI template for this, as illustrated in <a class="reference internal" href="#threshold-t-fig"><span class="std std-numref">Fig. 7</span></a>.</p>
 <figure class="align-default" id="threshold-t-fig">
 <a class="reference internal image-reference" href="_images/threshold-t.png"><img alt="_images/threshold-t.png" src="_images/threshold-t.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 7 </span><span class="caption-text">Illustration of how an image of <span class="math notranslate nohighlight">\(t\)</span>-statistics can be thresholded by making certain voxels invisible. For interpretation, the thresholded image can be overlaid on another image, typically a template in standard space.</span><a class="headerlink" href="#threshold-t-fig" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 7 </span><span class="caption-text">Illustration of how an image of <span class="math notranslate nohighlight">\(t\)</span>-statistics can be thresholded by making certain voxels invisible. For interpretation, the thresholded image can be overlaid on another image, typically a template in standard space.</span><a class="headerlink" href="#threshold-t-fig" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>In terms of the cut-off value we choose, this can either be a value within the image itself (e.g. a value of <span class="math notranslate nohighlight">\(t\)</span>), a value from another image that is aligned, or a value that can be calculated using the voxel values in the image. For our image of <span class="math notranslate nohighlight">\(t\)</span>-statistics, it makes most sense to threshold based on the associated <span class="math notranslate nohighlight">\(p\)</span>-value at each voxel. For example, the image overlaid below is the result of thresholding an image of <span class="math notranslate nohighlight">\(t\)</span>-statistics based on setting any voxel where <span class="math notranslate nohighlight">\(p &gt; 0.05\)</span> equal to 0. Voxels with a value of 0 are then displayed as transparent by the image viewing software. Notice that there are <em>a lot</em> of results here. The reasons for this will be discussed later in the lesson.</p>
@@ -404,7 +404,7 @@ document.write(`
 <figure class="align-default" id="upper-tail-p-fig">
 <a class="reference internal image-reference" href="_images/upper-tail-p.png"><img alt="_images/upper-tail-p.png" src="_images/upper-tail-p.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 8 </span><span class="caption-text">Illustration of how the <span class="math notranslate nohighlight">\(p\)</span>-values for <span class="math notranslate nohighlight">\(t\)</span>-statistics calculated in SPM are <em>upper-tail</em>, meaning we only see significant effects for <span class="math notranslate nohighlight">\(t\)</span>-values that are both <em>large</em> and <em>positive</em>.</span><a class="headerlink" href="#upper-tail-p-fig" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 8 </span><span class="caption-text">Illustration of how the <span class="math notranslate nohighlight">\(p\)</span>-values for <span class="math notranslate nohighlight">\(t\)</span>-statistics calculated in SPM are <em>upper-tail</em>, meaning we only see significant effects for <span class="math notranslate nohighlight">\(t\)</span>-values that are both <em>large</em> and <em>positive</em>.</span><a class="headerlink" href="#upper-tail-p-fig" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>In terms of interpretation, using only upper-tail <span class="math notranslate nohighlight">\(p\)</span>-values means that we will only see significant results when the direction of the contrast matches the direction of the effect. To understand what this means, consider a simple example where we have condition <code class="docutils literal notranslate"><span class="pre">A</span></code> and condition <code class="docutils literal notranslate"><span class="pre">B</span></code>. If we use the contrast weights <span class="math notranslate nohighlight">\([1, -1]\)</span> we will only see significant effects in places where the signal for <code class="docutils literal notranslate"><span class="pre">A</span></code> is larger than <code class="docutils literal notranslate"><span class="pre">B</span></code>. Conversely, if we used the contrast weights <span class="math notranslate nohighlight">\([-1, 1]\)</span> we would only see significant effects in places where the signal for <code class="docutils literal notranslate"><span class="pre">B</span></code> is larger than <code class="docutils literal notranslate"><span class="pre">A</span></code>.</p>
