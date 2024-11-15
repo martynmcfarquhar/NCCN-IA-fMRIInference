@@ -5,6 +5,8 @@ copy p-uncorr-001.html _build\html\p-uncorr-001.html
 copy p-fdr-05.html _build\html\p-fdr-05.html
 copy p-fdr-topo-05.html _build\html\p-fdr-topo-05.html
 copy p-fwe-05.html _build\html\p-fwe-05.html
+copy peak-level.html _build\html\peak-level.html
+copy cluster-level.html _build\html\cluster-level.html
 git add -A
 git commit -m 'updates'
 git push

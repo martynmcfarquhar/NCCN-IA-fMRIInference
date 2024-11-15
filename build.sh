@@ -7,6 +7,8 @@ cp p-uncorr-001.html _build/html/p-uncorr-001.html
 cp p-fdr-05.html _build/html/p-fdr-05.html
 cp p-fdr-topo-05.html _build/html/p-fdr-topo-05.html
 cp p-fwe-05.html _build/html/p-fwe-05.html
+cp peak-level.html _build/html/peak-level.html
+cp cluster-level.html _build/html/cluster-level.html
 git add -A
 git commit -m 'updates'
 git push
